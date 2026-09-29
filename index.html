@@ -6,17 +6,17 @@
   <meta name="theme-color" content="#0f766e">
   <title>Productivity Hub - Kelola Waktu, Tugas & Jurnal</title>
   
-  <!-- Google Fonts: Plus Jakarta Sans -->
+  <!-- Google Fonts: Plus Jakarta Sans & Kantumruy Pro (Khmer) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* =========================================
-       CSS RESET & VARIABLES (BABY PINK & PURPLE)
+       CSS VARIABLES: BABY PINK & PURPLE PALETTE
        ========================================= */
     :root {
-      /* Palette: Baby Pink & Purple */
+      /* Palette: Baby Pink */
       --pink-50: #fdf2f8;
       --pink-100: #fce7f3;
       --pink-200: #fbcfe8;
@@ -25,6 +25,7 @@
       --pink-500: #ec4899;
       --pink-600: #db2777;
 
+      /* Palette: Purple */
       --purple-50: #faf5ff;
       --purple-100: #f3e8ff;
       --purple-200: #e9d5ff;
@@ -38,31 +39,30 @@
       /* UI Tokens */
       --bg-page: #f1f5f9;
       --surface: #ffffff;
-      --surface-glass: rgba(255, 255, 255, 0.85);
+      --surface-glass: rgba(255, 255, 255, 0.9);
       --text-main: #1e1b4b;
       --text-muted: #64748b;
       --text-light: #94a3b8;
-      --border-soft: rgba(236, 72, 153, 0.12);
-      --border-purple: rgba(168, 85, 247, 0.15);
+      --border-soft: rgba(236, 72, 153, 0.14);
+      --border-purple: rgba(168, 85, 247, 0.16);
 
       /* Gradients */
       --grad-primary: linear-gradient(135deg, #f472b6 0%, #a855f7 100%);
       --grad-primary-hover: linear-gradient(135deg, #ec4899 0%, #9333ea 100%);
-      --grad-card: linear-gradient(135deg, rgba(253, 242, 248, 0.9) 0%, rgba(243, 232, 255, 0.9) 100%);
-      --grad-glow: radial-gradient(circle at top right, rgba(244, 114, 182, 0.15), transparent 70%);
+      --grad-card: linear-gradient(135deg, rgba(253, 242, 248, 0.95) 0%, rgba(243, 232, 255, 0.95) 100%);
 
       /* Shadows */
-      --shadow-sm: 0 2px 8px -2px rgba(168, 85, 247, 0.08);
-      --shadow-md: 0 10px 25px -5px rgba(236, 72, 153, 0.12), 0 8px 10px -6px rgba(168, 85, 247, 0.08);
+      --shadow-sm: 0 2px 10px -2px rgba(168, 85, 247, 0.08);
+      --shadow-md: 0 10px 25px -5px rgba(236, 72, 153, 0.14), 0 8px 10px -6px rgba(168, 85, 247, 0.08);
       --shadow-glow: 0 8px 24px -4px rgba(236, 72, 153, 0.35);
-      --shadow-phone: 0 25px 60px -15px rgba(30, 27, 75, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.04);
+      --shadow-phone: 0 25px 60px -15px rgba(30, 27, 75, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.04);
 
-      /* Layout */
+      /* Layout Dimensions */
       --radius-sm: 10px;
       --radius-md: 16px;
-      --radius-lg: 24px;
+      --radius-lg: 22px;
       --radius-full: 9999px;
-      --bottom-bar-height: 74px;
+      --bottom-bar-height: 72px;
       --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
 
@@ -75,7 +75,7 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Kantumruy Pro', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg-page);
       color: var(--text-main);
       display: flex;
@@ -85,21 +85,20 @@
       overflow-x: hidden;
     }
 
-    /* Input & editable text allow selection */
     input, textarea {
       user-select: auto;
       font-family: inherit;
     }
 
     /* =========================================
-       DESKTOP SMARTPHONE CONTAINER FRAME
+       SMARTPHONE FRAME (DESKTOP & MOBILE RESPONSIVE)
        ========================================= */
     .phone-container {
       width: 100%;
       max-width: 420px;
       min-height: 100vh;
       height: 100vh;
-      max-height: 900px;
+      max-height: 890px;
       background: #ffffff;
       box-shadow: var(--shadow-phone);
       position: relative;
@@ -116,11 +115,10 @@
         outline: 1px solid rgba(168, 85, 247, 0.15);
       }
       
-      /* Subtle camera notch decoration on desktop */
       .phone-notch {
         display: block;
-        width: 120px;
-        height: 20px;
+        width: 110px;
+        height: 18px;
         background: #1e1b4b;
         border-bottom-left-radius: 12px;
         border-bottom-right-radius: 12px;
@@ -133,8 +131,8 @@
       .phone-notch::after {
         content: '';
         position: absolute;
-        right: 28px;
-        top: 6px;
+        right: 24px;
+        top: 5px;
         width: 8px;
         height: 8px;
         border-radius: 50%;
@@ -162,14 +160,14 @@
 
     /* App Header */
     .app-header {
-      padding: 16px 20px 12px;
+      padding: 14px 18px 12px;
       background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(244, 114, 182, 0.15);
+      border-bottom: 1px solid rgba(244, 114, 182, 0.16);
       position: sticky;
       top: 0;
       z-index: 30;
@@ -179,13 +177,13 @@
     .brand-group {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
     }
 
     .brand-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
       background: var(--grad-primary);
       display: flex;
       align-items: center;
@@ -195,7 +193,7 @@
     }
 
     .brand-title {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 800;
       background: var(--grad-primary);
       -webkit-background-clip: text;
@@ -203,17 +201,118 @@
       letter-spacing: -0.02em;
     }
 
+    .header-right-group {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    /* Language Switcher Dropdown */
+    .lang-select-wrapper {
+      position: relative;
+    }
+
+    .lang-switcher-btn {
+      background: var(--purple-50);
+      border: 1px solid var(--purple-200);
+      color: var(--purple-700);
+      padding: 4px 8px;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-switcher-btn:hover {
+      background: var(--purple-100);
+      border-color: var(--purple-300);
+    }
+
+    .lang-globe-icon {
+      font-size: 0.85rem;
+    }
+
+    .lang-chevron {
+      transition: transform 0.2s ease;
+    }
+    .lang-switcher-btn[aria-expanded="true"] .lang-chevron {
+      transform: rotate(180deg);
+    }
+
+    .lang-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      background: #ffffff;
+      border: 1px solid rgba(244, 114, 182, 0.22);
+      border-radius: var(--radius-md);
+      box-shadow: 0 12px 28px -4px rgba(30, 27, 75, 0.16), 0 4px 12px rgba(168, 85, 247, 0.1);
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 148px;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px) scale(0.96);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .lang-dropdown-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .lang-option-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border: none;
+      background: transparent;
+      border-radius: var(--radius-sm);
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .lang-option-btn:hover {
+      background: var(--purple-50);
+      color: var(--purple-700);
+    }
+
+    .lang-option-btn.active {
+      background: var(--grad-card);
+      color: var(--purple-900);
+      font-weight: 700;
+    }
+
+    .lang-flag {
+      font-size: 1rem;
+    }
+
     .date-badge {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--purple-700);
       background: var(--purple-100);
-      padding: 4px 10px;
+      padding: 4px 9px;
       border-radius: var(--radius-full);
       border: 1px solid var(--purple-200);
+      white-space: nowrap;
     }
 
-    /* Screen Views Area */
+    /* Viewport & Screen Transitions */
     .screens-viewport {
       flex: 1;
       position: relative;
@@ -228,15 +327,13 @@
       width: 100%;
       height: 100%;
       overflow-y: auto;
-      padding: 18px 18px calc(var(--bottom-bar-height) + var(--safe-bottom) + 16px);
+      padding: 16px 18px calc(var(--bottom-bar-height) + var(--safe-bottom) + 16px);
       opacity: 0;
       visibility: hidden;
-      transform: translateY(8px) scale(0.98);
-      transition: opacity 0.24s cubic-bezier(0.4, 0, 0.2, 1), 
-                  transform 0.24s cubic-bezier(0.4, 0, 0.2, 1),
-                  visibility 0.24s;
-      scrollbar-width: thin;
-      scrollbar-color: var(--pink-200) transparent;
+      transform: translateY(8px) scale(0.985);
+      transition: opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1), 
+                  transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                  visibility 0.22s;
       background: radial-gradient(circle at top right, rgba(251, 207, 232, 0.35), transparent 45%),
                   radial-gradient(circle at bottom left, rgba(233, 213, 255, 0.35), transparent 50%),
                   #ffffff;
@@ -249,7 +346,6 @@
       z-index: 10;
     }
 
-    /* Scrollbar styling */
     .screen::-webkit-scrollbar {
       width: 4px;
     }
@@ -258,164 +354,46 @@
       border-radius: 4px;
     }
 
-    /* =========================================
-       BOTTOM NAVIGATION BAR (FIXED BOTTOM)
-       ========================================= */
-    .bottom-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: calc(var(--bottom-bar-height) + var(--safe-bottom));
-      padding-bottom: var(--safe-bottom);
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-top: 1px solid rgba(244, 114, 182, 0.2);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      align-items: center;
-      z-index: 50;
-      box-shadow: 0 -4px 20px rgba(168, 85, 247, 0.08);
-    }
-
-    .tab-btn {
-      background: none;
-      border: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      height: 100%;
-      cursor: pointer;
-      color: var(--text-muted);
-      position: relative;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .tab-icon-wrapper {
-      width: 42px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--radius-full);
-      transition: all 0.25s ease;
-      position: relative;
-    }
-
-    .tab-btn svg {
-      width: 22px;
-      height: 22px;
-      stroke-width: 2.2;
-      transition: transform 0.2s ease, stroke 0.2s ease;
-    }
-
-    .tab-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      transition: color 0.2s ease, font-weight 0.2s ease;
-    }
-
-    /* Active Tab State */
-    .tab-btn.active {
-      color: var(--purple-700);
-    }
-
-    .tab-btn.active .tab-icon-wrapper {
-      background: linear-gradient(135deg, rgba(244, 114, 182, 0.18), rgba(168, 85, 247, 0.22));
-    }
-
-    .tab-btn.active svg {
-      stroke: var(--purple-600);
-      transform: translateY(-1px) scale(1.1);
-    }
-
-    .tab-btn.active .tab-label {
-      color: var(--purple-700);
-      font-weight: 700;
-    }
-
-    .tab-btn:active {
-      transform: scale(0.94);
-    }
-
-    /* Indicator pill */
-    .tab-badge {
-      position: absolute;
-      top: 2px;
-      right: 4px;
-      background: var(--pink-500);
-      color: white;
-      font-size: 0.62rem;
-      font-weight: 700;
-      min-width: 16px;
-      height: 16px;
-      border-radius: var(--radius-full);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 4px;
-      box-shadow: 0 2px 6px rgba(236, 72, 153, 0.4);
-    }
-
-    /* =========================================
-       HERO CARDS & BANNER
-       ========================================= */
+    /* Hero Card */
     .hero-card {
       background: var(--grad-card);
       border: 1px solid var(--border-soft);
       border-radius: var(--radius-lg);
-      padding: 18px 20px;
-      margin-bottom: 20px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
       box-shadow: var(--shadow-sm);
       position: relative;
       overflow: hidden;
     }
 
-    .hero-card::after {
-      content: '';
-      position: absolute;
-      right: -20px;
-      bottom: -20px;
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
     .hero-title {
-      font-size: 1.18rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: var(--text-main);
       margin-bottom: 4px;
     }
 
     .hero-subtitle {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       line-height: 1.4;
     }
 
-    /* Progress Widget inside Hero */
     .progress-box {
-      margin-top: 14px;
+      margin-top: 12px;
     }
 
     .progress-header {
       display: flex;
       justify-content: space-between;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
       color: var(--purple-700);
       margin-bottom: 6px;
     }
 
     .progress-track {
-      height: 8px;
+      height: 7px;
       background: rgba(255, 255, 255, 0.8);
       border-radius: var(--radius-full);
       overflow: hidden;
@@ -426,287 +404,344 @@
       height: 100%;
       background: var(--grad-primary);
       border-radius: var(--radius-full);
-      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       width: 0%;
     }
 
     /* =========================================
-       TAB 1: TUGAS (TASK MANAGEMENT)
+       TAB 1: FORM INPUT CEPAT & TODO
        ========================================= */
-    .quick-add-form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .quick-add-card {
       background: #ffffff;
       border: 1px solid var(--border-soft);
-      border-radius: var(--radius-md);
-      padding: 14px;
-      margin-bottom: 18px;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 16px;
       box-shadow: var(--shadow-sm);
     }
 
-    .input-row {
+    .form-title-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--purple-900);
+      margin-bottom: 8px;
       display: flex;
-      gap: 8px;
+      align-items: center;
+      gap: 6px;
     }
 
-    .task-input {
+    .input-task-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .task-input-field {
       flex: 1;
-      border: 1px solid var(--pink-200);
+      border: 1.5px solid var(--pink-200);
       background: var(--pink-50);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      padding: 11px 14px;
       font-size: 0.88rem;
       color: var(--text-main);
       outline: none;
       transition: all 0.2s ease;
     }
 
-    .task-input:focus {
+    .task-input-field:focus {
       border-color: var(--pink-500);
       background: #ffffff;
       box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
     }
 
-    .btn-add-task {
+    .btn-submit-task {
       background: var(--grad-primary);
       border: none;
       color: white;
-      border-radius: var(--radius-sm);
-      padding: 0 18px;
+      border-radius: var(--radius-md);
+      padding: 0 16px;
       font-weight: 700;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       display: flex;
       align-items: center;
       gap: 6px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+      box-shadow: 0 4px 14px rgba(236, 72, 153, 0.32);
       transition: transform 0.15s ease, filter 0.15s ease;
+      flex-shrink: 0;
     }
 
-    .btn-add-task:active {
-      transform: scale(0.96);
+    .btn-submit-task:active {
+      transform: scale(0.95);
       filter: brightness(0.92);
     }
 
-    .form-options-row {
+    .priority-selector-group {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      font-size: 0.78rem;
+      justify-content: space-between;
+      gap: 8px;
     }
 
-    .category-pills {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      padding-bottom: 2px;
-    }
-
-    .cat-pill {
-      border: 1px solid var(--purple-200);
-      background: var(--purple-50);
-      color: var(--purple-700);
+    .priority-section-label {
       font-size: 0.72rem;
-      font-weight: 600;
-      padding: 3px 9px;
-      border-radius: var(--radius-full);
-      cursor: pointer;
-      transition: all 0.15s ease;
+      font-weight: 700;
+      color: var(--text-muted);
       white-space: nowrap;
     }
 
-    .cat-pill.active {
-      background: var(--purple-600);
-      color: white;
-      border-color: var(--purple-600);
+    .priority-pills-row {
+      display: flex;
+      gap: 6px;
+      flex: 1;
+      justify-content: flex-end;
+    }
+
+    .priority-pill-btn {
+      border: none;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* 1. Tinggi: purple white */
+    .pill-tinggi {
+      background: #9333ea;
+      color: #ffffff;
+      border: 1.5px solid #7e22ce;
       box-shadow: 0 2px 6px rgba(147, 51, 234, 0.25);
     }
 
-    .priority-select {
-      border: 1px solid var(--pink-200);
-      background: #fff;
-      color: var(--text-muted);
-      border-radius: var(--radius-full);
-      padding: 3px 8px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      outline: none;
+    /* 2. Sedang: putih */
+    .pill-sedang {
+      background: #ffffff;
+      color: #334155;
+      border: 1.5px solid #cbd5e1;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
     }
 
-    /* Filter Bar */
-    .filter-tabs {
+    /* 3. Rendah: putih pink */
+    .pill-rendah {
+      background: #ffffff;
+      color: #db2777;
+      border: 1.5px solid #f472b6;
+      box-shadow: 0 1px 4px rgba(236, 72, 153, 0.12);
+    }
+
+    .priority-pill-btn.active {
+      transform: translateY(-2px) scale(1.05);
+      outline: 2px solid var(--purple-500);
+      outline-offset: 1px;
+    }
+    .pill-tinggi.active {
+      background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+      box-shadow: 0 4px 12px rgba(147, 51, 234, 0.45);
+    }
+    .pill-sedang.active {
+      background: #f8fafc;
+      border-color: #94a3b8;
+      box-shadow: 0 4px 12px rgba(100, 116, 139, 0.25);
+    }
+    .pill-rendah.active {
+      background: var(--pink-50);
+      border-color: var(--pink-500);
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+    }
+
+    /* Filter Kategori */
+    .filter-category-bar {
       display: flex;
-      gap: 8px;
-      margin-bottom: 14px;
-      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-      padding-bottom: 8px;
-    }
-
-    .filter-btn {
-      background: none;
-      border: none;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      cursor: pointer;
-      padding: 4px 10px;
+      background: rgba(243, 232, 255, 0.55);
+      padding: 4px;
       border-radius: var(--radius-full);
-      transition: all 0.15s ease;
+      gap: 4px;
+      margin-bottom: 16px;
+      border: 1px solid var(--purple-200);
     }
 
-    .filter-btn.active {
-      background: var(--pink-100);
-      color: var(--pink-600);
+    .filter-tab-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 8px 6px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
       font-weight: 700;
+      color: var(--purple-700);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Task Items */
-    .tasks-list {
+    .filter-tab-btn.active {
+      background: #ffffff;
+      color: var(--purple-900);
+      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.16);
+    }
+
+    .filter-badge-count {
+      font-size: 0.68rem;
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+      background: var(--purple-100);
+      color: var(--purple-700);
+    }
+
+    .filter-tab-btn.active .filter-badge-count {
+      background: var(--pink-500);
+      color: white;
+    }
+
+    /* Daftar Kartu Sentuh */
+    .tasks-list-container {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 11px;
     }
 
-    .task-item {
+    .task-card {
       background: #ffffff;
       border: 1px solid var(--border-soft);
       border-radius: var(--radius-md);
-      padding: 12px 14px;
+      padding: 13px 14px;
       display: flex;
       align-items: center;
       gap: 12px;
       box-shadow: var(--shadow-sm);
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                  transform 0.18s ease, 
+                  background-color 0.25s ease, 
+                  border-color 0.25s ease;
       position: relative;
     }
 
-    .task-item:hover {
-      border-color: var(--pink-300);
-      transform: translateY(-1px);
+    .task-card:active {
+      transform: scale(0.985);
     }
 
-    .task-checkbox-btn {
-      width: 24px;
-      height: 24px;
-      min-width: 24px;
-      border-radius: 8px;
+    .task-card.completed {
+      opacity: 0.52;
+      background: #fafafa;
+      border-color: rgba(226, 232, 240, 0.9);
+    }
+
+    .check-circle-btn {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 50%;
       border: 2px solid var(--pink-300);
       background: #ffffff;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      flex-shrink: 0;
     }
 
-    .task-item.completed .task-checkbox-btn {
-      background: var(--grad-primary);
-      border-color: transparent;
-      box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
-    }
-
-    .task-checkbox-btn svg {
+    .check-circle-btn svg {
       width: 14px;
       height: 14px;
       stroke: white;
-      stroke-width: 3;
+      stroke-width: 3.2;
       opacity: 0;
-      transform: scale(0.5);
-      transition: all 0.2s ease;
+      transform: scale(0.4);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .task-item.completed .task-checkbox-btn svg {
+    .task-card.completed .check-circle-btn {
+      background: var(--grad-primary);
+      border-color: transparent;
+      box-shadow: 0 2px 8px rgba(236, 72, 153, 0.35);
+      transform: scale(1.04);
+    }
+
+    .task-card.completed .check-circle-btn svg {
       opacity: 1;
       transform: scale(1);
     }
 
-    .task-details {
+    .task-content-center {
       flex: 1;
       min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
-    .task-title {
-      font-size: 0.88rem;
+    .task-title-text {
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--text-main);
       word-break: break-word;
-      transition: all 0.2s ease;
       line-height: 1.35;
+      transition: color 0.2s ease, text-decoration 0.2s ease;
     }
 
-    .task-item.completed .task-title {
+    .task-card.completed .task-title-text {
       text-decoration: line-through;
       color: var(--text-light);
     }
 
-    .task-meta {
+    .task-meta-row {
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-top: 4px;
-      flex-wrap: wrap;
     }
 
-    .tag-category {
+    .task-priority-tag {
       font-size: 0.65rem;
       font-weight: 700;
-      padding: 2px 7px;
+      padding: 2px 8px;
       border-radius: var(--radius-full);
-      background: var(--purple-100);
-      color: var(--purple-700);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
     }
 
-    .tag-priority {
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: var(--radius-full);
-    }
+    .tag-tinggi { background: #9333ea; color: #ffffff; }
+    .tag-sedang { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+    .tag-rendah { background: #ffffff; color: #db2777; border: 1px solid #f472b6; }
 
-    .priority-high {
-      background: #ffe4e6;
-      color: #e11d48;
-    }
-
-    .priority-med {
-      background: #fef3c7;
-      color: #b45309;
-    }
-
-    .priority-low {
-      background: #e0f2fe;
-      color: #0284c7;
-    }
-
-    .btn-delete-task {
-      background: none;
+    .btn-delete-right {
+      width: 34px;
+      height: 34px;
+      min-width: 34px;
+      background: transparent;
       border: none;
       color: var(--text-light);
       cursor: pointer;
-      padding: 6px;
-      border-radius: 8px;
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.15s ease;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
     }
 
-    .btn-delete-task:hover {
-      color: #ef4444;
-      background: #fee2e2;
-    }
+    .btn-delete-right:hover { color: #ef4444; background: #fee2e2; }
+    .btn-delete-right:active { transform: scale(0.9); background: #fecaca; }
 
-    /* Empty state */
-    .empty-state {
+    .empty-tasks-box {
       text-align: center;
       padding: 36px 16px;
       color: var(--text-muted);
     }
 
-    .empty-illustration {
-      width: 68px;
-      height: 68px;
+    .empty-icon-circle {
+      width: 64px;
+      height: 64px;
       margin: 0 auto 12px;
       border-radius: 50%;
       background: var(--pink-100);
@@ -716,74 +751,80 @@
       color: var(--pink-500);
     }
 
-    .empty-title {
+    .empty-tasks-title {
       font-size: 0.95rem;
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 4px;
     }
 
-    .empty-desc {
+    .empty-tasks-desc {
       font-size: 0.8rem;
     }
 
     /* =========================================
-       TAB 2: FOKUS (POMODORO TIMER)
+       TAB 2: FOKUS (POMODORO TIMER INTERAKTIF)
        ========================================= */
     .timer-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 10px;
+      margin-top: 4px;
     }
 
-    .timer-modes {
+    .timer-modes-box {
       display: flex;
-      background: rgba(243, 232, 255, 0.6);
-      padding: 4px;
+      background: rgba(243, 232, 255, 0.7);
+      padding: 5px;
       border-radius: var(--radius-full);
-      gap: 4px;
-      margin-bottom: 26px;
-      border: 1px solid var(--purple-200);
+      gap: 6px;
+      margin-bottom: 22px;
+      border: 1.5px solid var(--purple-200);
       width: 100%;
-      max-width: 320px;
+      max-width: 360px;
     }
 
-    .mode-btn {
+    .mode-tab-btn {
       flex: 1;
-      padding: 8px 10px;
+      padding: 9px 8px;
       border: none;
       background: transparent;
       border-radius: var(--radius-full);
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       font-weight: 700;
       color: var(--purple-700);
       cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
       text-align: center;
-    }
-
-    .mode-btn.active {
-      background: #ffffff;
-      color: var(--purple-900);
-      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.15);
-    }
-
-    /* Circular Timer Dial */
-    .timer-dial-wrapper {
-      position: relative;
-      width: 230px;
-      height: 230px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 28px;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    .mode-tab-btn.active {
+      background: #ffffff;
+      color: var(--purple-900);
+      box-shadow: 0 4px 14px rgba(168, 85, 247, 0.2);
+      transform: scale(1.02);
+    }
+
+    .timer-dial-wrapper {
+      position: relative;
+      width: 236px;
+      height: 236px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
     }
 
     .dial-svg {
       width: 100%;
       height: 100%;
       transform: rotate(-90deg);
+      filter: drop-shadow(0 6px 14px rgba(236, 72, 153, 0.12));
     }
 
     .dial-track {
@@ -810,174 +851,79 @@
     }
 
     .timer-display {
-      font-size: 2.8rem;
+      font-size: 3.1rem;
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
       color: var(--purple-900);
       line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       font-variant-numeric: tabular-nums;
     }
 
     .timer-state-label {
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--pink-500);
       background: var(--pink-50);
-      padding: 3px 12px;
+      padding: 4px 12px;
       border-radius: var(--radius-full);
       border: 1px solid var(--pink-200);
+      box-shadow: 0 2px 6px rgba(236, 72, 153, 0.08);
     }
 
-    .timer-controls {
+    .timer-controls-thumb-row {
       display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .btn-circle {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 1px solid var(--border-purple);
-      background: #ffffff;
-      color: var(--purple-700);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease;
-    }
-
-    .btn-circle:hover {
-      background: var(--purple-50);
-      transform: scale(1.05);
-    }
-
-    .btn-circle:active {
-      transform: scale(0.94);
-    }
-
-    .btn-timer-main {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      border: none;
-      background: var(--grad-primary);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 10px 25px -4px rgba(236, 72, 153, 0.45);
-      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .btn-timer-main:hover {
-      box-shadow: 0 12px 30px -4px rgba(236, 72, 153, 0.6);
-      transform: scale(1.06);
-    }
-
-    .btn-timer-main:active {
-      transform: scale(0.94);
-    }
-
-    .btn-timer-main svg {
-      width: 28px;
-      height: 28px;
-      stroke-width: 2.4;
-    }
-
-    /* Sound / Ambient switch */
-    .timer-addon-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      gap: 8px;
       width: 100%;
-      background: #ffffff;
-      padding: 12px 16px;
+      margin-bottom: 22px;
+    }
+
+    .thumb-btn {
+      flex: 1;
+      min-height: 52px;
       border-radius: var(--radius-md);
-      border: 1px solid var(--border-soft);
-      margin-bottom: 14px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .addon-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .addon-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--purple-100);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--purple-600);
-    }
-
-    .addon-text h4 {
+      border: none;
       font-size: 0.82rem;
       font-weight: 700;
-    }
-
-    .addon-text p {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    /* Toggle switch */
-    .toggle-switch {
-      position: relative;
-      display: inline-block;
-      width: 44px;
-      height: 24px;
-    }
-
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .slider {
-      position: absolute;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
       cursor: pointer;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: #e2e8f0;
-      transition: .3s;
-      border-radius: 24px;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: var(--shadow-sm);
+      padding: 10px 8px;
+      user-select: none;
     }
 
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 18px;
-      width: 18px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      transition: .3s;
-      border-radius: 50%;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    .thumb-btn:active {
+      transform: scale(0.95);
     }
 
-    input:checked + .slider {
+    .btn-thumb-start {
       background: var(--grad-primary);
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(236, 72, 153, 0.35);
     }
+    .btn-thumb-start:hover { filter: brightness(1.05); }
 
-    input:checked + .slider:before {
-      transform: translateX(20px);
+    .btn-thumb-pause {
+      background: #ffffff;
+      color: var(--purple-700);
+      border: 1.5px solid var(--purple-200);
     }
+    .btn-thumb-pause:hover { background: var(--purple-50); }
 
-    /* Daily Focus Stats Card */
+    .btn-thumb-reset {
+      background: #ffffff;
+      color: var(--text-muted);
+      border: 1.5px solid #e2e8f0;
+    }
+    .btn-thumb-reset:hover { background: #f8fafc; color: var(--text-main); }
+
     .focus-stats-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1008,30 +954,141 @@
     }
 
     /* =========================================
-       TAB 3: JURNAL (NOTES & REFLECTION)
+       AJAKAN REFLEKSI: POPUP MODAL RAMAH
+       ========================================= */
+    .reflection-modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(30, 27, 75, 0.48);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 120;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s;
+    }
+
+    .reflection-modal-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .reflection-modal-card {
+      background: #ffffff;
+      border-radius: 26px;
+      padding: 24px 20px;
+      text-align: center;
+      width: 100%;
+      max-width: 340px;
+      box-shadow: 0 20px 45px -10px rgba(30, 27, 75, 0.3), 0 0 0 1px rgba(244, 114, 182, 0.2);
+      transform: translateY(18px) scale(0.94);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .reflection-modal-overlay.show .reflection-modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .reflection-modal-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(168, 85, 247, 0.25));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 14px;
+      border: 2px solid rgba(236, 72, 153, 0.25);
+      animation: bounceBadge 1.2s infinite alternate ease-in-out;
+    }
+
+    @keyframes bounceBadge {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-4px) scale(1.06); }
+    }
+
+    .reflection-modal-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--purple-900);
+      margin-bottom: 8px;
+    }
+
+    .reflection-modal-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .reflection-modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .btn-goto-journal {
+      background: var(--grad-primary);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 13px 18px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 18px rgba(236, 72, 153, 0.35);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn-goto-journal:active {
+      transform: scale(0.97);
+      filter: brightness(0.93);
+    }
+
+    .btn-dismiss-modal {
+      background: transparent;
+      color: var(--text-muted);
+      border: none;
+      padding: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+      transition: color 0.15s ease;
+    }
+
+    .btn-dismiss-modal:hover {
+      color: var(--text-main);
+    }
+
+    /* =========================================
+       TAB 3: JURNAL (REFLEKSI & CATATAN)
        ========================================= */
     .journal-composer {
       background: #ffffff;
       border: 1px solid var(--border-soft);
       border-radius: var(--radius-lg);
       padding: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       box-shadow: var(--shadow-sm);
     }
 
-    .composer-header {
-      margin-bottom: 12px;
-    }
-
-    .composer-label {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--purple-900);
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    /* Mood Picker */
     .mood-row {
       display: flex;
       justify-content: space-between;
@@ -1053,16 +1110,6 @@
       transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .mood-emoji {
-      font-size: 1.25rem;
-    }
-
-    .mood-text {
-      font-size: 0.62rem;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-
     .mood-btn.active {
       background: var(--grad-primary);
       border-color: transparent;
@@ -1074,10 +1121,12 @@
       color: #ffffff;
     }
 
-    /* Journal text inputs */
+    .mood-emoji { font-size: 1.25rem; }
+    .mood-text { font-size: 0.62rem; font-weight: 700; color: var(--text-muted); }
+
     .journal-title-input {
       width: 100%;
-      border: 1px solid var(--purple-200);
+      border: 1.5px solid var(--purple-200);
       background: var(--purple-50);
       border-radius: var(--radius-sm);
       padding: 10px 12px;
@@ -1086,19 +1135,17 @@
       color: var(--text-main);
       margin-bottom: 10px;
       outline: none;
-      transition: all 0.2s ease;
     }
 
     .journal-title-input:focus {
       border-color: var(--purple-500);
       background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
     }
 
     .journal-textarea {
       width: 100%;
-      height: 100px;
-      border: 1px solid var(--pink-200);
+      height: 96px;
+      border: 1.5px solid var(--pink-200);
       background: var(--pink-50);
       border-radius: var(--radius-sm);
       padding: 12px;
@@ -1107,25 +1154,12 @@
       resize: none;
       outline: none;
       margin-bottom: 12px;
-      line-height: 1.5;
-      transition: all 0.2s ease;
+      line-height: 1.45;
     }
 
     .journal-textarea:focus {
       border-color: var(--pink-500);
       background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15);
-    }
-
-    .composer-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .journal-tag-pills {
-      display: flex;
-      gap: 6px;
     }
 
     .btn-save-journal {
@@ -1133,7 +1167,7 @@
       color: white;
       border: none;
       border-radius: var(--radius-sm);
-      padding: 9px 18px;
+      padding: 10px 18px;
       font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
@@ -1144,117 +1178,116 @@
       transition: all 0.2s ease;
     }
 
-    .btn-save-journal:active {
-      transform: scale(0.96);
-    }
-
-    /* Past Journal Entries */
-    .entries-heading {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: var(--purple-900);
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .entry-count {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--purple-600);
-      background: var(--purple-100);
-      padding: 2px 8px;
-      border-radius: var(--radius-full);
-    }
-
-    .journal-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
     .journal-card {
       background: #ffffff;
       border: 1px solid var(--border-purple);
       border-radius: var(--radius-md);
       padding: 14px;
       box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease;
-      position: relative;
-    }
-
-    .journal-card:hover {
-      border-color: var(--purple-300);
+      margin-bottom: 10px;
     }
 
     .journal-card-top {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       margin-bottom: 8px;
     }
 
-    .journal-card-mood {
-      display: flex;
+    /* =========================================
+       BOTTOM NAVIGATION BAR (FIXED BOTTOM)
+       ========================================= */
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: calc(var(--bottom-bar-height) + var(--safe-bottom));
+      padding-bottom: var(--safe-bottom);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(244, 114, 182, 0.2);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       align-items: center;
-      gap: 6px;
+      z-index: 50;
+      box-shadow: 0 -4px 20px rgba(168, 85, 247, 0.08);
     }
 
-    .journal-card-emoji {
-      font-size: 1.15rem;
-    }
-
-    .journal-card-date {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--text-light);
-    }
-
-    .journal-card-title {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-
-    .journal-card-body {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-
-    .journal-card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-      padding-top: 8px;
-      border-top: 1px dashed rgba(226, 232, 240, 0.8);
-    }
-
-    .btn-delete-entry {
+    .tab-btn {
       background: none;
       border: none;
-      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      height: 100%;
       cursor: pointer;
-      font-size: 0.72rem;
-      font-weight: 600;
+      color: var(--text-muted);
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .tab-icon-wrapper {
+      width: 42px;
+      height: 30px;
       display: flex;
       align-items: center;
-      gap: 4px;
-      transition: color 0.15s ease;
+      justify-content: center;
+      border-radius: var(--radius-full);
+      transition: all 0.22s ease;
+      position: relative;
     }
 
-    .btn-delete-entry:hover {
-      color: #ef4444;
+    .tab-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2.2;
     }
 
-    /* =========================================
-       TOAST NOTIFICATION COMPONENT
-       ========================================= */
+    .tab-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .tab-btn.active {
+      color: var(--purple-700);
+    }
+
+    .tab-btn.active .tab-icon-wrapper {
+      background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(168, 85, 247, 0.22));
+    }
+
+    .tab-btn.active svg {
+      stroke: var(--purple-600);
+      transform: translateY(-1px) scale(1.1);
+    }
+
+    .tab-btn.active .tab-label {
+      color: var(--purple-700);
+      font-weight: 700;
+    }
+
+    .tab-badge {
+      position: absolute;
+      top: 1px;
+      right: 4px;
+      background: var(--pink-500);
+      color: white;
+      font-size: 0.62rem;
+      font-weight: 700;
+      min-width: 16px;
+      height: 16px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+    }
+
+    /* Toast Notification */
     .toast {
       position: absolute;
       top: 68px;
@@ -1262,17 +1295,17 @@
       transform: translateX(-50%) translateY(-20px);
       background: #1e1b4b;
       color: #ffffff;
-      padding: 10px 18px;
+      padding: 9px 18px;
       border-radius: var(--radius-full);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 10px 25px rgba(30, 27, 75, 0.3);
+      box-shadow: 0 10px 25px rgba(30, 27, 75, 0.25);
       opacity: 0;
       visibility: hidden;
-      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
       z-index: 100;
       white-space: nowrap;
       pointer-events: none;
@@ -1282,10 +1315,6 @@
       opacity: 1;
       visibility: visible;
       transform: translateX(-50%) translateY(0);
-    }
-
-    .toast-icon {
-      color: var(--pink-400);
     }
   </style>
 </head>
@@ -1299,7 +1328,6 @@
     <header class="app-header">
       <div class="brand-group">
         <div class="brand-logo" aria-hidden="true">
-          <!-- Sparkle / Hub Icon -->
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
           </svg>
@@ -1308,26 +1336,64 @@
           <h1 class="brand-title">Productivity Hub</h1>
         </div>
       </div>
-      <div class="date-badge" id="currentDateBadge">Selasa, 29 Sep</div>
+
+      <div class="header-right-group">
+        <!-- OPSI GANTI BAHASA: INDONESIA, INGGRIS, KHMER -->
+        <div class="lang-select-wrapper">
+          <button 
+            type="button" 
+            class="lang-switcher-btn" 
+            id="langSwitcherBtn" 
+            aria-label="Pilih Bahasa / Change Language" 
+            aria-expanded="false" 
+            aria-haspopup="true"
+          >
+            <span class="lang-globe-icon">🌐</span>
+            <span id="currentLangLabel">ID</span>
+            <svg class="lang-chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <!-- Dropdown Bahasa -->
+          <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+            <button type="button" class="lang-option-btn active" data-lang="id" role="menuitem">
+              <span class="lang-flag">🇮🇩</span>
+              <span>Indonesia</span>
+            </button>
+            <button type="button" class="lang-option-btn" data-lang="en" role="menuitem">
+              <span class="lang-flag">🇬🇧</span>
+              <span>English</span>
+            </button>
+            <button type="button" class="lang-option-btn" data-lang="km" role="menuitem">
+              <span class="lang-flag">🇰🇭</span>
+              <span>ភាសាខ្មែរ (Khmer)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Date Badge -->
+        <div class="date-badge" id="currentDateBadge">Selasa, 29 Sep</div>
+      </div>
     </header>
 
     <!-- TOAST NOTIFICATION -->
     <div id="toastNotification" class="toast" role="alert">
-      <span class="toast-icon">✨</span>
+      <span id="toastIcon">✨</span>
       <span id="toastMessage">Tindakan berhasil!</span>
     </div>
 
-    <!-- SCREENS VIEWPORT (TAB VIEWS) -->
+    <!-- SCREENS VIEWPORT -->
     <main class="screens-viewport">
 
       <!-- =========================================
-           TAB 1: TUGAS (TASK SCREEN)
+           TAB 1: TUGAS (TODO TAB)
            ========================================= -->
       <section id="tabTugas" class="screen active" aria-labelledby="tugasTabLabel">
-        <!-- Hero summary -->
+        <!-- Hero summary card -->
         <div class="hero-card">
-          <h2 class="hero-title" id="greetingUser">Halo, Semangat Produktif! ✨</h2>
-          <p class="hero-subtitle">Selesaikan tugas harianmu satu per satu secara konsisten.</p>
+          <h2 class="hero-title" id="heroTasksTitle">Halo, Semangat Produktif! ✨</h2>
+          <p class="hero-subtitle" id="heroTasksSubtitle">Kelola tugas harianmu dengan mudah dan selesaikan tepat waktu.</p>
           
           <div class="progress-box">
             <div class="progress-header">
@@ -1340,89 +1406,149 @@
           </div>
         </div>
 
-        <!-- Quick Add Task Form -->
-        <form class="quick-add-form" id="addTaskForm">
-          <div class="input-row">
+        <!-- FORM INPUT CEPAT -->
+        <form class="quick-add-card" id="quickAddTaskForm">
+          <div class="form-title-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span id="labelQuickAdd">Tambah Tugas Cepat</span>
+          </div>
+
+          <!-- Input nama tugas -->
+          <div class="input-task-row">
             <input 
               type="text" 
               id="taskTitleInput" 
-              class="task-input" 
-              placeholder="Tulis tugas barumu..." 
+              class="task-input-field" 
+              placeholder="Tulis nama tugas..." 
               required
               autocomplete="off"
             >
-            <button type="submit" class="btn-add-task" id="btnSubmitTask">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
+            <button type="submit" class="btn-submit-task" id="btnSubmitTask" aria-label="Tambah tugas">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
-              <span>Tambah</span>
+              <span id="btnSubmitTaskText">Tambah</span>
             </button>
           </div>
-          
-          <div class="form-options-row">
-            <!-- Category options -->
-            <div class="category-pills" id="categoryPicker">
-              <span class="cat-pill active" data-cat="Kerja">💼 Kerja</span>
-              <span class="cat-pill" data-cat="Belajar">📚 Belajar</span>
-              <span class="cat-pill" data-cat="Pribadi">🌸 Pribadi</span>
-              <span class="cat-pill" data-cat="Kesehatan">🧘 Sehat</span>
-            </div>
 
-            <!-- Priority option -->
-            <select id="prioritySelect" class="priority-select" title="Prioritas">
-              <option value="high">🔥 Tinggi</option>
-              <option value="med" selected>⚡ Sedang</option>
-              <option value="low">🌱 Rendah</option>
-            </select>
+          <!-- Tombol Pemilih Prioritas Berbentuk Pill: Tinggi, Sedang, Rendah -->
+          <div class="priority-selector-group">
+            <span class="priority-section-label" id="labelPriority">Prioritas:</span>
+            <div class="priority-pills-row" id="priorityPillGroup" role="radiogroup" aria-label="Pilih Prioritas">
+              <!-- Pill Tinggi: purple white -->
+              <button 
+                type="button" 
+                class="priority-pill-btn pill-tinggi active" 
+                data-priority="tinggi" 
+                role="radio" 
+                aria-checked="true"
+                title="Prioritas Tinggi"
+              >
+                <span>🔥</span>
+                <span id="pillHighText">Tinggi</span>
+              </button>
+
+              <!-- Pill Sedang: putih -->
+              <button 
+                type="button" 
+                class="priority-pill-btn pill-sedang" 
+                data-priority="sedang" 
+                role="radio" 
+                aria-checked="false"
+                title="Prioritas Sedang"
+              >
+                <span>⚡</span>
+                <span id="pillMedText">Sedang</span>
+              </button>
+
+              <!-- Pill Rendah: putih pink -->
+              <button 
+                type="button" 
+                class="priority-pill-btn pill-rendah" 
+                data-priority="rendah" 
+                role="radio" 
+                aria-checked="false"
+                title="Prioritas Rendah"
+              >
+                <span>🌱</span>
+                <span id="pillLowText">Rendah</span>
+              </button>
+            </div>
           </div>
         </form>
 
-        <!-- Filter bar -->
-        <div class="filter-tabs">
-          <button class="filter-btn active" data-filter="all">Semua (<span id="countAll">0</span>)</button>
-          <button class="filter-btn" data-filter="active">Aktif (<span id="countActive">0</span>)</button>
-          <button class="filter-btn" data-filter="completed">Selesai (<span id="countDone">0</span>)</button>
+        <!-- FILTER KATEGORI: "Semua", "Aktif", "Selesai" -->
+        <div class="filter-category-bar" role="tablist" aria-label="Filter Status Tugas">
+          <button type="button" class="filter-tab-btn active" data-filter="semua" role="tab" aria-selected="true">
+            <span id="filterAllText">Semua</span>
+            <span class="filter-badge-count" id="countFilterAll">0</span>
+          </button>
+          <button type="button" class="filter-tab-btn" data-filter="aktif" role="tab" aria-selected="false">
+            <span id="filterActiveText">Aktif</span>
+            <span class="filter-badge-count" id="countFilterActive">0</span>
+          </button>
+          <button type="button" class="filter-tab-btn" data-filter="selesai" role="tab" aria-selected="false">
+            <span id="filterDoneText">Selesai</span>
+            <span class="filter-badge-count" id="countFilterDone">0</span>
+          </button>
         </div>
 
-        <!-- Tasks Container -->
-        <div class="tasks-list" id="tasksContainer">
-          <!-- Dynamic Task Items rendered via JS -->
-        </div>
+        <!-- DAFTAR KARTU SENTUH -->
+        <div class="tasks-list-container" id="tasksListContainer"></div>
 
-        <!-- Empty state placeholder -->
-        <div class="empty-state" id="emptyStateTasks" style="display: none;">
-          <div class="empty-illustration">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Empty state jika tidak ada tugas -->
+        <div class="empty-tasks-box" id="emptyTasksState" style="display: none;">
+          <div class="empty-icon-circle">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
               <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
           </div>
-          <h3 class="empty-title">Tidak ada tugas!</h3>
-          <p class="empty-desc">Semua target selesai atau tambahkan tugas baru di atas.</p>
+          <h3 class="empty-tasks-title" id="emptyTasksTitle">Semua Tugas Beres! 🎉</h3>
+          <p class="empty-tasks-desc" id="emptyTasksDesc">Tidak ada tugas pada filter ini. Tambahkan tugas baru di form atas.</p>
         </div>
       </section>
 
       <!-- =========================================
-           TAB 2: FOKUS (POMODORO TIMER SCREEN)
-           ========================================= */
-      -->
+           TAB 2: FOKUS (POMODORO TIMER INTERAKTIF)
+           ========================================= -->
       <section id="tabFokus" class="screen" aria-labelledby="fokusTabLabel">
-        <!-- Hero summary -->
         <div class="hero-card">
-          <h2 class="hero-title">Zona Fokus Mendalam ⏱️</h2>
-          <p class="hero-subtitle">Terapkan teknik Pomodoro untuk konsentrasi tinggi tanpa rasa jenuh.</p>
+          <h2 class="hero-title" id="heroFocusTitle">Zona Fokus Pomodoro ⏱️</h2>
+          <p class="hero-subtitle" id="heroFocusSubtitle">Bekerja dalam blok waktu terfokus untuk efisiensi belajar optimal.</p>
         </div>
 
         <div class="timer-container">
-          <!-- Timer Modes -->
-          <div class="timer-modes" role="tablist">
-            <button class="mode-btn active" data-time="1500" data-mode="pomodoro">Fokus (25m)</button>
-            <button class="mode-btn" data-time="300" data-mode="shortBreak">Istirahat (5m)</button>
-            <button class="mode-btn" data-time="900" data-mode="longBreak">Jeda (15m)</button>
+          <!-- PILIHAN MODE SESI: "Fokus Belajar 25 Menit" & "Istirahat Santai 5 Menit" -->
+          <div class="timer-modes-box" role="tablist" aria-label="Pilihan Mode Sesi">
+            <button 
+              type="button" 
+              class="mode-tab-btn active" 
+              data-time="1500" 
+              data-mode="fokus" 
+              role="tab" 
+              aria-selected="true"
+              id="modeStudyBtn"
+            >
+              <span>📚 Fokus Belajar 25 Menit</span>
+            </button>
+            <button 
+              type="button" 
+              class="mode-tab-btn" 
+              data-time="300" 
+              data-mode="istirahat" 
+              role="tab" 
+              aria-selected="false"
+              id="modeBreakBtn"
+            >
+              <span>☕ Istirahat Santai 5 Menit</span>
+            </button>
           </div>
 
-          <!-- Circular Dial -->
+          <!-- TAMPILAN WAKTU BESAR: LINGKARAN HITUNG MUNDUR -->
           <div class="timer-dial-wrapper">
             <svg class="dial-svg" viewBox="0 0 220 220">
               <defs>
@@ -1436,173 +1562,144 @@
             </svg>
             <div class="dial-inner">
               <div class="timer-display" id="timerDisplay">25:00</div>
-              <div class="timer-state-label" id="timerStateLabel">Fokus Aktif</div>
+              <div class="timer-state-label" id="timerStateLabel">Fokus Siap</div>
             </div>
           </div>
 
-          <!-- Controls -->
-          <div class="timer-controls">
-            <!-- Reset Button -->
-            <button class="btn-circle" id="btnResetTimer" title="Reset Waktu" aria-label="Reset Timer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- TOMBOL KONTROL RAMAH JEMPOL: MULAI, JEDA, ATUR ULANG -->
+          <div class="timer-controls-thumb-row" aria-label="Kontrol Timer">
+            <!-- Mulai (Start) -->
+            <button type="button" class="thumb-btn btn-thumb-start" id="btnStartTimer" aria-label="Mulai Sesi">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <span id="btnStartLabel">Mulai</span>
+            </button>
+
+            <!-- Jeda (Pause) -->
+            <button type="button" class="thumb-btn btn-thumb-pause" id="btnPauseTimer" aria-label="Jeda Sesi">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+              </svg>
+              <span id="btnPauseLabel">Jeda</span>
+            </button>
+
+            <!-- Atur Ulang (Reset) -->
+            <button type="button" class="thumb-btn btn-thumb-reset" id="btnResetTimer" aria-label="Atur Ulang Sesi">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 2v6h6"></path>
                 <path d="M21 12A9 9 0 0 0 6 5.3L3 8"></path>
                 <path d="M21 22v-6h-6"></path>
                 <path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"></path>
               </svg>
-            </button>
-
-            <!-- Main Play/Pause Button -->
-            <button class="btn-timer-main" id="btnToggleTimer" title="Mulai / Jeda" aria-label="Mulai atau Jeda">
-              <svg id="timerPlayIcon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-              <svg id="timerPauseIcon" style="display: none;" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <rect x="6" y="4" width="4" height="16"></rect>
-                <rect x="14" y="4" width="4" height="16"></rect>
-              </svg>
-            </button>
-
-            <!-- Skip / Forward Session -->
-            <button class="btn-circle" id="btnSkipTimer" title="Lewati Sesi" aria-label="Lewati Sesi">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="5 4 15 12 5 20 5 4"></polygon>
-                <line x1="19" y1="5" x2="19" y2="19"></line>
-              </svg>
+              <span id="btnResetLabel">Atur Ulang</span>
             </button>
           </div>
 
-          <!-- Ambient Sound / Chime option -->
-          <div class="timer-addon-bar">
-            <div class="addon-info">
-              <div class="addon-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                </svg>
-              </div>
-              <div class="addon-text">
-                <h4>Suara Lonceng Selesai</h4>
-                <p>Nada audio merdu saat sesi selesai</p>
-              </div>
-            </div>
-            <label class="toggle-switch">
-              <input type="checkbox" id="soundToggle" checked>
-              <span class="slider"></span>
-            </label>
-          </div>
-
-          <!-- Stats Grid -->
+          <!-- Ringkasan Statistik Fokus -->
           <div class="focus-stats-grid">
             <div class="stat-card">
               <div class="stat-val" id="statCompletedSessions">0</div>
-              <div class="stat-label">Sesi Diselesaikan</div>
+              <div class="stat-label" id="statCompletedLabel">Sesi Selesai</div>
             </div>
             <div class="stat-card">
               <div class="stat-val" id="statTotalMinutes">0 m</div>
-              <div class="stat-label">Total Menit Fokus</div>
+              <div class="stat-label" id="statTotalMinutesLabel">Total Menit Fokus</div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- =========================================
-           TAB 3: JURNAL (JOURNAL / NOTES SCREEN)
+           TAB 3: JURNAL (CATATAN REFLEKSI)
            ========================================= -->
       <section id="tabJurnal" class="screen" aria-labelledby="jurnalTabLabel">
-        <!-- Hero summary -->
         <div class="hero-card">
-          <h2 class="hero-title">Buku Jurnal & Refleksi 📖</h2>
-          <p class="hero-subtitle">Catat rasa syukur, ide kreatif, dan refleksi harianmu di sini.</p>
+          <h2 class="hero-title" id="heroJournalTitle">Jurnal & Refleksi Harian 📖</h2>
+          <p class="hero-subtitle" id="heroJournalSubtitle">Tuliskan evaluasi belajar, rasa syukur, dan ide barumu setiap hari.</p>
         </div>
 
-        <!-- Journal Composer -->
         <div class="journal-composer">
-          <div class="composer-header">
-            <span class="composer-label">Bagaimana Perasaanmu Hari Ini?</span>
-            <!-- Mood picker -->
-            <div class="mood-row" id="moodPicker">
-              <button type="button" class="mood-btn active" data-mood="Hebat" data-emoji="🥰">
-                <span class="mood-emoji">🥰</span>
-                <span class="mood-text">Hebat</span>
-              </button>
-              <button type="button" class="mood-btn" data-mood="Senang" data-emoji="😊">
-                <span class="mood-emoji">😊</span>
-                <span class="mood-text">Senang</span>
-              </button>
-              <button type="button" class="mood-btn" data-mood="Tenang" data-emoji="🌿">
-                <span class="mood-emoji">🌿</span>
-                <span class="mood-text">Tenang</span>
-              </button>
-              <button type="button" class="mood-btn" data-mood="Lelah" data-emoji="😴">
-                <span class="mood-emoji">😴</span>
-                <span class="mood-text">Lelah</span>
-              </button>
-              <button type="button" class="mood-btn" data-mood="Stres" data-emoji="🤯">
-                <span class="mood-emoji">🤯</span>
-                <span class="mood-text">Pusing</span>
-              </button>
-            </div>
+          <div class="mood-row" id="moodPicker">
+            <button type="button" class="mood-btn active" data-mood="Hebat" data-emoji="🥰">
+              <span class="mood-emoji">🥰</span>
+              <span class="mood-text" id="moodTextGreat">Hebat</span>
+            </button>
+            <button type="button" class="mood-btn" data-mood="Senang" data-emoji="😊">
+              <span class="mood-emoji">😊</span>
+              <span class="mood-text" id="moodTextHappy">Senang</span>
+            </button>
+            <button type="button" class="mood-btn" data-mood="Tenang" data-emoji="🌿">
+              <span class="mood-emoji">🌿</span>
+              <span class="mood-text" id="moodTextCalm">Tenang</span>
+            </button>
+            <button type="button" class="mood-btn" data-mood="Lelah" data-emoji="😴">
+              <span class="mood-emoji">😴</span>
+              <span class="mood-text" id="moodTextTired">Lelah</span>
+            </button>
           </div>
 
           <input 
             type="text" 
             id="journalTitleInput" 
             class="journal-title-input" 
-            placeholder="Judul catatan (cth: Refleksi Pagi)..."
+            placeholder="Judul catatan (cth: Evaluasi Belajar)..."
             autocomplete="off"
           >
-
           <textarea 
             id="journalBodyInput" 
             class="journal-textarea" 
-            placeholder="Tuliskan apa yang kamu syukuri, capaian kecil hari ini, atau ide baru..."
+            placeholder="Tuliskan refleksi belajarmu, hal yang dipelajari, atau apa yang disyukuri..."
           ></textarea>
 
-          <div class="composer-footer">
-            <div class="journal-tag-pills">
-              <span class="cat-pill active" id="journalTagPill">✨ Refleksi</span>
-            </div>
-            <button type="button" class="btn-save-journal" id="btnSaveJournal">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                <polyline points="7 3 7 8 15 8"></polyline>
-              </svg>
-              <span>Simpan Catatan</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- History Entries -->
-        <div class="entries-heading">
-          <span>Riwayat Jurnal</span>
-          <span class="entry-count" id="journalCountBadge">0 Catatan</span>
-        </div>
-
-        <div class="journal-list" id="journalListContainer">
-          <!-- Dynamic entries rendered via JS -->
-        </div>
-
-        <!-- Empty state placeholder -->
-        <div class="empty-state" id="emptyStateJournal" style="display: none;">
-          <div class="empty-illustration">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          <button type="button" class="btn-save-journal" id="btnSaveJournal">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+              <polyline points="17 21 17 13 7 13 7 21"></polyline>
             </svg>
-          </div>
-          <h3 class="empty-title">Belum ada jurnal</h3>
-          <p class="empty-desc">Mulai tulis catatan harian atau renungan pertamamu di atas.</p>
+            <span id="btnSaveJournalText">Simpan Jurnal</span>
+          </button>
         </div>
+
+        <div id="journalListContainer"></div>
       </section>
 
     </main>
 
     <!-- =========================================
-         MENU NAVIGASI BAWAH (BOTTOM BAR - FIXED)
+         AJAKAN REFLEKSI: POPUP MODAL RAMAH
          ========================================= -->
-    <nav class="bottom-bar" aria-label="Navigasi Utama">
+    <div id="reflectionModal" class="reflection-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="reflectionModalTitle">
+      <div class="reflection-modal-card">
+        <div class="reflection-modal-badge">
+          <span>🎉</span>
+        </div>
+        <h3 id="reflectionModalTitle" class="reflection-modal-title">Sesi Fokus Tuntas! ✨</h3>
+        <p class="reflection-modal-desc" id="reflectionModalDesc">
+          Kerja luar biasa! Kamu telah menuntaskan 25 menit sesi belajar dengan konsentrasi tinggi. Yuk luangkan 1 menit untuk mencatat evaluasi dan hal penting yang baru dipelajari.
+        </p>
+        <div class="reflection-modal-actions">
+          <button type="button" class="btn-goto-journal" id="btnGoToJournal">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              <line x1="9" y1="7" x2="15" y2="7"></line>
+              <line x1="9" y1="11" x2="15" y2="11"></line>
+            </svg>
+            <span id="btnGoToJournalText">Catat Evaluasi di Jurnal 📖</span>
+          </button>
+          <button type="button" class="btn-dismiss-modal" id="btnDismissModal">
+            <span id="btnDismissModalText">Nanti Saja</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         MENU NAVIGASI BAWAH (FIXED BOTTOM BAR)
+         ========================================= -->
+    <nav class="bottom-bar" aria-label="Navigasi Bawah">
       <!-- Tab 1: Tugas (Ikon Check-Square) -->
       <button class="tab-btn active" data-target="tabTugas" id="tugasTabLabel" aria-selected="true" role="tab">
         <div class="tab-icon-wrapper">
@@ -1612,7 +1709,7 @@
           </svg>
           <span class="tab-badge" id="bottomTaskBadge">0</span>
         </div>
-        <span class="tab-label">Tugas</span>
+        <span class="tab-label" id="tabLabelTasks">Tugas</span>
       </button>
 
       <!-- Tab 2: Fokus (Ikon Timer) -->
@@ -1623,7 +1720,7 @@
             <polyline points="12 6 12 12 16 14"></polyline>
           </svg>
         </div>
-        <span class="tab-label">Fokus</span>
+        <span class="tab-label" id="tabLabelFocus">Fokus</span>
       </button>
 
       <!-- Tab 3: Jurnal (Ikon Catatan Buku) -->
@@ -1636,25 +1733,267 @@
             <line x1="9" y1="11" x2="15" y2="11"></line>
           </svg>
         </div>
-        <span class="tab-label">Jurnal</span>
+        <span class="tab-label" id="tabLabelJournal">Jurnal</span>
       </button>
     </nav>
 
   </div>
 
   <!-- =========================================
-       PURE JAVASCRIPT LOGIC
+       JAVASCRIPT MURNI (LOCALSTORAGE, I18N, & LOGIKA)
        ========================================= -->
   <script>
     (function () {
       'use strict';
 
-      /* --- INITIAL DEFAULT DATA --- */
+      /* =========================================
+         KAMUS TRANSLASI / I18N (ID, EN, KM)
+         ========================================= */
+      const TRANSLATIONS = {
+        id: {
+          code: 'ID',
+          brandTitle: 'Productivity Hub',
+          greetingMorning: 'Selamat Pagi, Semangat! ☀️',
+          greetingNoon: 'Selamat Siang, Produktif! 🌤️',
+          greetingAfternoon: 'Selamat Sore, Hebat! 🌇',
+          greetingNight: 'Selamat Malam, Luar Biasa! 🌙',
+          heroTasksTitle: 'Halo, Semangat Produktif! ✨',
+          heroTasksSubtitle: 'Kelola tugas harianmu dengan mudah dan selesaikan tepat waktu.',
+          tasksCompletedSuffix: 'tugas selesai',
+          quickAddTitle: 'Tambah Tugas Cepat',
+          taskInputPlaceholder: 'Tulis nama tugas...',
+          btnAdd: 'Tambah',
+          priorityLabel: 'Prioritas:',
+          priorityHigh: 'Tinggi',
+          priorityMed: 'Sedang',
+          priorityLow: 'Rendah',
+          filterAll: 'Semua',
+          filterActive: 'Aktif',
+          filterDone: 'Selesai',
+          emptyTasksTitle: 'Semua Tugas Beres! 🎉',
+          emptyTasksDesc: 'Tidak ada tugas pada filter ini. Tambahkan tugas baru di form atas.',
+          toastTaskAdded: 'Tugas baru ditambahkan! 🚀',
+          toastTaskCompleted: 'Tugas selesai! Mantap 🎉',
+          toastTaskUncompleted: 'Tugas dipindahkan ke aktif.',
+          toastTaskDeleted: 'Tugas telah dihapus.',
+
+          // Fokus
+          heroFocusTitle: 'Zona Fokus Pomodoro ⏱️',
+          heroFocusSubtitle: 'Bekerja dalam blok waktu terfokus untuk efisiensi belajar optimal.',
+          modeStudy: '📚 Fokus Belajar 25 Menit',
+          modeBreak: '☕ Istirahat Santai 5 Menit',
+          stateFocusReady: 'Fokus Siap',
+          stateBreakReady: 'Santai Siap',
+          stateFocusRunning: 'Fokus Berjalan ⚡',
+          stateBreakRunning: 'Istirahat Berjalan ☕',
+          statePaused: 'Waktu Dijeda ⏸️',
+          stateSessionDone: 'Sesi Tuntas! 🎉',
+          stateBreakDone: 'Istirahat Usai! ☕',
+          btnStart: 'Mulai',
+          btnPause: 'Jeda',
+          btnReset: 'Atur Ulang',
+          statSessions: 'Sesi Selesai',
+          statMinutes: 'Total Menit Fokus',
+          toastSessionStarted: 'Sesi dimulai! Tetap fokus ✨',
+          toastSessionPaused: 'Sesi dijeda.',
+          toastTimerReset: 'Timer diatur ulang.',
+          toastBreakOver: 'Waktu istirahat santai selesai! Siap fokus belajar lagi? 💪',
+
+          // Modal Refleksi
+          modalTitle: 'Sesi Fokus Tuntas! ✨',
+          modalDesc: 'Kerja luar biasa! Kamu telah menuntaskan 25 menit sesi belajar dengan konsentrasi tinggi. Yuk luangkan 1 menit untuk mencatat evaluasi dan hal penting yang baru dipelajari.',
+          btnModalJournal: 'Catat Evaluasi di Jurnal 📖',
+          btnModalDismiss: 'Nanti Saja',
+          modalPrefillTitle: 'Evaluasi Belajar 25 Menit',
+
+          // Jurnal
+          heroJournalTitle: 'Jurnal & Refleksi Harian 📖',
+          heroJournalSubtitle: 'Tuliskan evaluasi belajar, rasa syukur, dan ide barumu setiap hari.',
+          moodGreat: 'Hebat',
+          moodHappy: 'Senang',
+          moodCalm: 'Tenang',
+          moodTired: 'Lelah',
+          journalTitlePlaceholder: 'Judul catatan (cth: Evaluasi Belajar)...',
+          journalBodyPlaceholder: 'Tuliskan refleksi belajarmu, hal yang dipelajari, atau apa yang disyukuri...',
+          btnSaveJournal: 'Simpan Jurnal',
+          toastJournalSaved: 'Jurnal tersimpan rapi! 📖✨',
+          toastWriteJournalFirst: 'Tuliskan refleksi terlebih dahulu!',
+
+          // Bottom Bar
+          tabTasks: 'Tugas',
+          tabFocus: 'Fokus',
+          tabJournal: 'Jurnal',
+
+          days: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
+          months: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+          todayPrefix: 'Hari ini'
+        },
+        en: {
+          code: 'EN',
+          brandTitle: 'Productivity Hub',
+          greetingMorning: 'Good Morning, Stay Sharp! ☀️',
+          greetingNoon: 'Good Day, Productive! 🌤️',
+          greetingAfternoon: 'Good Afternoon, Great! 🌇',
+          greetingNight: 'Good Evening, Awesome! 🌙',
+          heroTasksTitle: 'Hello, Stay Productive! ✨',
+          heroTasksSubtitle: 'Manage your daily tasks easily and finish them on time.',
+          tasksCompletedSuffix: 'tasks completed',
+          quickAddTitle: 'Quick Add Task',
+          taskInputPlaceholder: 'Write task title...',
+          btnAdd: 'Add',
+          priorityLabel: 'Priority:',
+          priorityHigh: 'High',
+          priorityMed: 'Medium',
+          priorityLow: 'Low',
+          filterAll: 'All',
+          filterActive: 'Active',
+          filterDone: 'Done',
+          emptyTasksTitle: 'All Tasks Done! 🎉',
+          emptyTasksDesc: 'No tasks in this filter. Add a new task in the form above.',
+          toastTaskAdded: 'New task added! 🚀',
+          toastTaskCompleted: 'Task completed! Well done 🎉',
+          toastTaskUncompleted: 'Task moved to active.',
+          toastTaskDeleted: 'Task deleted.',
+
+          // Fokus
+          heroFocusTitle: 'Pomodoro Focus Zone ⏱️',
+          heroFocusSubtitle: 'Work in focused time blocks for peak learning efficiency.',
+          modeStudy: '📚 Study Focus 25 Min',
+          modeBreak: '☕ Relax Break 5 Min',
+          stateFocusReady: 'Focus Ready',
+          stateBreakReady: 'Break Ready',
+          stateFocusRunning: 'Focus Active ⚡',
+          stateBreakRunning: 'Break Active ☕',
+          statePaused: 'Paused ⏸️',
+          stateSessionDone: 'Session Done! 🎉',
+          stateBreakDone: 'Break Over! ☕',
+          btnStart: 'Start',
+          btnPause: 'Pause',
+          btnReset: 'Reset',
+          statSessions: 'Sessions Done',
+          statMinutes: 'Total Focus Mins',
+          toastSessionStarted: 'Session started! Stay focused ✨',
+          toastSessionPaused: 'Session paused.',
+          toastTimerReset: 'Timer reset.',
+          toastBreakOver: 'Break time is over! Ready to focus again? 💪',
+
+          // Modal Refleksi
+          modalTitle: 'Focus Session Completed! ✨',
+          modalDesc: 'Awesome work! You finished 25 minutes of deep focus study. Take 1 minute to reflect on your learning and key takeaways.',
+          btnModalJournal: 'Write in Journal 📖',
+          btnModalDismiss: 'Later',
+          modalPrefillTitle: '25-Min Study Reflection',
+
+          // Jurnal
+          heroJournalTitle: 'Daily Journal & Reflection 📖',
+          heroJournalSubtitle: 'Record your study reflection, gratitude, and creative ideas daily.',
+          moodGreat: 'Great',
+          moodHappy: 'Happy',
+          moodCalm: 'Calm',
+          moodTired: 'Tired',
+          journalTitlePlaceholder: 'Note title (e.g. Study Reflection)...',
+          journalBodyPlaceholder: 'Write your learning reflection, takeaways, or what you are grateful for...',
+          btnSaveJournal: 'Save Journal',
+          toastJournalSaved: 'Journal saved successfully! 📖✨',
+          toastWriteJournalFirst: 'Please write your reflection first!',
+
+          // Bottom Bar
+          tabTasks: 'Tasks',
+          tabFocus: 'Focus',
+          tabJournal: 'Journal',
+
+          days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+          months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          todayPrefix: 'Today'
+        },
+        km: {
+          code: 'KM',
+          brandTitle: 'Productivity Hub',
+          greetingMorning: 'អរុណសួស្តី មានថាមពល! ☀️',
+          greetingNoon: 'ទិវាសួស្តី ផលិតភាពខ្ពស់! 🌤️',
+          greetingAfternoon: 'សាយណ្ហសួស្តី អស្ចារ្យណាស់! 🌇',
+          greetingNight: 'រាត្រីសួស្តី គេងលក់ស្រួល! 🌙',
+          heroTasksTitle: 'សួស្តី បង្កើនផលិតភាព! ✨',
+          heroTasksSubtitle: 'គ្រប់គ្រងភារកិច្ចប្រចាំថ្ងៃរបស់អ្នកដោយងាយស្រួល និងទាន់ពេលវេលា។',
+          tasksCompletedSuffix: 'ភារកិច្ចបានបញ្ចប់',
+          quickAddTitle: 'បន្ថែមភារកិច្ចរហ័ស',
+          taskInputPlaceholder: 'សរសេរឈ្មោះភារកិច្ច...',
+          btnAdd: 'បន្ថែម',
+          priorityLabel: 'អាទិភាព:',
+          priorityHigh: 'ខ្ពស់',
+          priorityMed: 'មធ្យម',
+          priorityLow: 'ទាប',
+          filterAll: 'ទាំងអស់',
+          filterActive: 'សកម្ម',
+          filterDone: 'រួចរាល់',
+          emptyTasksTitle: 'ភារកិច្ចទាំងអស់រួចរាល់! 🎉',
+          emptyTasksDesc: 'គ្មានភារកិច្ចក្នុងតម្រងនេះទេ។ សូមបន្ថែមភារកិច្ចថ្មីខាងលើ។',
+          toastTaskAdded: 'បានបន្ថែមភារកិច្ចថ្មី! 🚀',
+          toastTaskCompleted: 'ភារកិច្ចបានបញ្ចប់! ពូកែណាស់ 🎉',
+          toastTaskUncompleted: 'បានប្តូរទៅជាសកម្មវិញ។',
+          toastTaskDeleted: 'បានលុបភារកិច្ច។',
+
+          // Fokus
+          heroFocusTitle: 'តំបន់ផ្តោតអារម្មណ៍ Pomodoro ⏱️',
+          heroFocusSubtitle: 'ធ្វើការក្នុងប្លុកពេលវេលាផ្តោតអារម្មណ៍ ដើម្បីប្រសិទ្ធភាពការសិក្សាខ្ពស់បំផុត។',
+          modeStudy: '📚 ផ្តោតការរៀន ២៥ នាទី',
+          modeBreak: '☕ សម្រាកលំហែកាយ ៥ នាទី',
+          stateFocusReady: 'ត្រៀមផ្តោតអារម្មណ៍',
+          stateBreakReady: 'ត្រៀមសម្រាក',
+          stateFocusRunning: 'កំពុងផ្តោតអារម្មណ៍ ⚡',
+          stateBreakRunning: 'កំពុងសម្រាក ☕',
+          statePaused: 'បានផ្អាក ⏸️',
+          stateSessionDone: 'វគ្គបានបញ្ចប់! 🎉',
+          stateBreakDone: 'ការសម្រាកបានបញ្ចប់! ☕',
+          btnStart: 'ចាប់ផ្តើម',
+          btnPause: 'ផ្អាក',
+          btnReset: 'កំណត់ឡើងវិញ',
+          statSessions: 'វគ្គបានបញ្ចប់',
+          statMinutes: 'នាទីផ្តោតសរុប',
+          toastSessionStarted: 'វគ្គបានចាប់ផ្តើម! សូមផ្តោតអារម្មណ៍ ✨',
+          toastSessionPaused: 'បានផ្អាកវគ្គ។',
+          toastTimerReset: 'បានកំណត់ម៉ោងឡើងវិញ។',
+          toastBreakOver: 'ពេលសម្រាកបានបញ្ចប់! ត្រៀមខ្លួនផ្តោតអារម្មណ៍បន្ត? 💪',
+
+          // Modal Refleksi
+          modalTitle: 'វគ្គផ្តោតបានបញ្ចប់! ✨',
+          modalDesc: 'ការងារល្អណាស់! អ្នកបានបញ្ចប់ការផ្តោតអារម្មណ៍ ២៥ នាទីយ៉ាងពេញលេញ។ សូមចំណាយពេល ១ នាទីដើម្បីកត់ត្រាការវាយតម្លៃរបស់អ្នក។',
+          btnModalJournal: 'កត់ត្រាក្នុងទិនានុប្បវត្តិ 📖',
+          btnModalDismiss: 'ពេលក្រោយ',
+          modalPrefillTitle: 'ការវាយតម្លៃការរៀន ២៥ នាទី',
+
+          // Jurnal
+          heroJournalTitle: 'ទិនានុប្បវត្តិ & ការឆ្លុះបញ្ចាំងប្រចាំថ្ងៃ 📖',
+          heroJournalSubtitle: 'កត់ត្រាការវាយតម្លៃការសិក្សា អំណរគុណ និងគំនិតថ្មីៗជារៀងរាល់ថ្ងៃ។',
+          moodGreat: 'អស្ចារ្យ',
+          moodHappy: 'សប្បាយ',
+          moodCalm: 'ស្ងប់ស្ងាត់',
+          moodTired: 'ហត់នឿយ',
+          journalTitlePlaceholder: 'ចំណងជើងកំណត់ចំណាំ (ឧ. ការវាយតម្លៃការរៀន)...',
+          journalBodyPlaceholder: 'សរសេរការឆ្លុះបញ្ចាំងពីការសិក្សា អ្វីដែលបានរៀន ឬអ្វីដែលអ្នកដឹងគុណ...',
+          btnSaveJournal: 'រក្សាទុកទិនានុប្បវត្តិ',
+          toastJournalSaved: 'ទិនានុប្បវត្តិត្រូវបានរក្សាទុកយ៉ាងស្អាត! 📖✨',
+          toastWriteJournalFirst: 'សូមសរសេរការឆ្លុះបញ្ចាំងជាមុនសិន!',
+
+          // Bottom Bar
+          tabTasks: 'ភារកិច្ច',
+          tabFocus: 'ផ្តោត',
+          tabJournal: 'កំណត់ហេតុ',
+
+          days: ['អាទិត្យ', 'ច័ន្ទ', 'អង្គារ', 'ពុធ', 'ព្រហស្បតិ៍', 'សុក្រ', 'សៅរ៍'],
+          months: ['មករា', 'កុម្ភៈ', 'មីនា', 'មេសា', 'ឧសភា', 'មិថុនា', 'កក្កដា', 'សីហា', 'កញ្ញា', 'តុលា', 'វិច្ឆិកា', 'ធ្នូ'],
+          todayPrefix: 'ថ្ងៃនេះ'
+        }
+      };
+
+      /* --- STATE DATA (LOCALSTORAGE PERSISTENCE) --- */
+      let currentLang = localStorage.getItem('ph_lang') || 'id';
+      if (!TRANSLATIONS[currentLang]) currentLang = 'id';
+
       const DEFAULT_TASKS = [
-        { id: 1, title: 'Menyusun rencana kerja minggu ini', category: 'Kerja', priority: 'high', completed: true },
-        { id: 2, title: 'Sesi fokus belajar 25 menit (Pomodoro)', category: 'Belajar', priority: 'med', completed: false },
-        { id: 3, title: 'Minum 2 liter air & peregangan tubuh', category: 'Kesehatan', priority: 'low', completed: false },
-        { id: 4, title: 'Menulis rasa syukur harian di jurnal', category: 'Pribadi', priority: 'med', completed: false }
+        { id: 1, title: 'Menyusun laporan pekerjaan minggu ini', priority: 'tinggi', completed: false },
+        { id: 2, title: 'Membaca artikel produktivitas & fokus', priority: 'sedang', completed: false },
+        { id: 3, title: 'Minum 2 gelas air putih & peregangan', priority: 'rendah', completed: true }
       ];
 
       const DEFAULT_JOURNALS = [
@@ -1663,214 +2002,380 @@
           title: 'Hari yang sangat produktif! ✨',
           mood: 'Hebat',
           emoji: '🥰',
-          tag: 'Refleksi',
-          content: 'Berhasil menyelesaikan target pekerjaan lebih cepat dan menikmati secangkir teh hangat di sore hari.',
-          date: 'Hari ini, 09:30'
+          content: 'Menyelesaikan semua prioritas tinggi sebelum sore dan merasa sangat puas.',
+          date: '09:30'
         }
       ];
 
-      /* --- STATE MANAGEMENT --- */
-      let tasks = JSON.parse(localStorage.getItem('ph_tasks')) || DEFAULT_TASKS;
-      let journals = JSON.parse(localStorage.getItem('ph_journals')) || DEFAULT_JOURNALS;
-      let currentFilter = 'all';
-      let selectedCategory = 'Kerja';
-      let selectedMood = { mood: 'Hebat', emoji: '🥰' };
-
-      /* --- DATE & GREETING SETUP --- */
-      function setupDateAndGreeting() {
-        const now = new Date();
-        const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
-
-        const dayName = days[now.getDay()];
-        const dayDate = now.getDate();
-        const monthName = months[now.getMonth()];
-        const badgeEl = document.getElementById('currentDateBadge');
-        if (badgeEl) {
-          badgeEl.textContent = `${dayName}, ${dayDate} ${monthName}`;
-        }
-
-        const hour = now.getHours();
-        const greetingEl = document.getElementById('greetingUser');
-        if (greetingEl) {
-          if (hour < 11) greetingEl.textContent = 'Selamat Pagi, Semangat! ☀️';
-          else if (hour < 15) greetingEl.textContent = 'Selamat Siang, Produktif! 🌤️';
-          else if (hour < 18) greetingEl.textContent = 'Selamat Sore, Hebat! 🌇';
-          else greetingEl.textContent = 'Selamat Malam, Luar Biasa! 🌙';
-        }
+      let tasks = [];
+      try {
+        const storedTasks = localStorage.getItem('ph_tasks');
+        tasks = storedTasks ? JSON.parse(storedTasks) : DEFAULT_TASKS;
+      } catch (e) {
+        tasks = DEFAULT_TASKS;
       }
 
-      /* --- TOAST NOTIFICATION --- */
+      let journals = [];
+      try {
+        const storedJournals = localStorage.getItem('ph_journals');
+        journals = storedJournals ? JSON.parse(storedJournals) : DEFAULT_JOURNALS;
+      } catch (e) {
+        journals = DEFAULT_JOURNALS;
+      }
+
+      let currentFilter = 'semua';
+      let selectedPriority = 'tinggi';
+      let selectedMood = { mood: 'Hebat', emoji: '🥰' };
+
+      function t(key) {
+        const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.id;
+        return dict[key] !== undefined ? dict[key] : (TRANSLATIONS.id[key] || '');
+      }
+
+      function saveTasksToLocalStorage() {
+        try {
+          localStorage.setItem('ph_tasks', JSON.stringify(tasks));
+        } catch (e) {
+          console.error(e);
+        }
+        renderTasks();
+      }
+
+      function saveJournalsToLocalStorage() {
+        try {
+          localStorage.setItem('ph_journals', JSON.stringify(journals));
+        } catch (e) {
+          console.error(e);
+        }
+        renderJournals();
+      }
+
+      /* --- TOAST NOTIFIKASI --- */
       let toastTimer = null;
-      function showToast(message, emoji = '✨') {
+      function showToast(message, icon = '✨') {
         const toast = document.getElementById('toastNotification');
         const msgEl = document.getElementById('toastMessage');
-        const iconEl = toast.querySelector('.toast-icon');
-
+        const iconEl = document.getElementById('toastIcon');
         if (!toast || !msgEl) return;
 
         msgEl.textContent = message;
-        if (iconEl) iconEl.textContent = emoji;
+        if (iconEl) iconEl.textContent = icon;
 
         toast.classList.add('show');
         if (toastTimer) clearTimeout(toastTimer);
-
         toastTimer = setTimeout(() => {
           toast.classList.remove('show');
-        }, 2400);
+        }, 2200);
       }
 
-      /* --- TAB SWITCHING (SMOOTH & INSTANT) --- */
-      function initTabNavigation() {
-        const tabButtons = document.querySelectorAll('.tab-btn');
+      /* --- SETUP HEADER & TANGGAL SESUAI BAHASA --- */
+      function setupHeader() {
+        const now = new Date();
+        const dict = TRANSLATIONS[currentLang];
+
+        const dayName = dict.days[now.getDay()];
+        const monthName = dict.months[now.getMonth()];
+        const dateEl = document.getElementById('currentDateBadge');
+        if (dateEl) {
+          dateEl.textContent = `${dayName}, ${now.getDate()} ${monthName}`;
+        }
+
+        const greetingEl = document.getElementById('heroTasksTitle');
+        if (greetingEl) {
+          const hr = now.getHours();
+          if (hr < 11) greetingEl.textContent = dict.greetingMorning;
+          else if (hr < 15) greetingEl.textContent = dict.greetingNoon;
+          else if (hr < 18) greetingEl.textContent = dict.greetingAfternoon;
+          else greetingEl.textContent = dict.greetingNight;
+        }
+      }
+
+      /* --- APLIKASIKAN BAHASA AKTIF KE SEMUA ELEMEN UI --- */
+      function applyLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('ph_lang', lang);
+        document.documentElement.lang = lang;
+
+        const dict = TRANSLATIONS[lang];
+
+        // Header
+        document.getElementById('currentLangLabel').textContent = dict.code;
+
+        // Update dropdown options active state
+        document.querySelectorAll('.lang-option-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        });
+
+        // Tab 1: Tugas
+        document.getElementById('heroTasksSubtitle').textContent = dict.heroTasksSubtitle;
+        document.getElementById('labelQuickAdd').textContent = dict.quickAddTitle;
+        document.getElementById('taskTitleInput').placeholder = dict.taskInputPlaceholder;
+        document.getElementById('btnSubmitTaskText').textContent = dict.btnAdd;
+        document.getElementById('labelPriority').textContent = dict.priorityLabel;
+        document.getElementById('pillHighText').textContent = dict.priorityHigh;
+        document.getElementById('pillMedText').textContent = dict.priorityMed;
+        document.getElementById('pillLowText').textContent = dict.priorityLow;
+        document.getElementById('filterAllText').textContent = dict.filterAll;
+        document.getElementById('filterActiveText').textContent = dict.filterActive;
+        document.getElementById('filterDoneText').textContent = dict.filterDone;
+        document.getElementById('emptyTasksTitle').textContent = dict.emptyTasksTitle;
+        document.getElementById('emptyTasksDesc').textContent = dict.emptyTasksDesc;
+
+        // Tab 2: Fokus
+        document.getElementById('heroFocusTitle').textContent = dict.heroFocusTitle;
+        document.getElementById('heroFocusSubtitle').textContent = dict.heroFocusSubtitle;
+        document.querySelector('#modeStudyBtn span').textContent = dict.modeStudy;
+        document.querySelector('#modeBreakBtn span').textContent = dict.modeBreak;
+        document.getElementById('btnStartLabel').textContent = dict.btnStart;
+        document.getElementById('btnPauseLabel').textContent = dict.btnPause;
+        document.getElementById('btnResetLabel').textContent = dict.btnReset;
+        document.getElementById('statCompletedLabel').textContent = dict.statSessions;
+        document.getElementById('statTotalMinutesLabel').textContent = dict.statMinutes;
+
+        // Label Timer State
+        const stateLabel = document.getElementById('timerStateLabel');
+        if (stateLabel) {
+          if (!isTimerRunning) {
+            stateLabel.textContent = currentMode === 'fokus' ? dict.stateFocusReady : dict.stateBreakReady;
+          } else {
+            stateLabel.textContent = currentMode === 'fokus' ? dict.stateFocusRunning : dict.stateBreakRunning;
+          }
+        }
+
+        // Modal Refleksi
+        document.getElementById('reflectionModalTitle').textContent = dict.modalTitle;
+        document.getElementById('reflectionModalDesc').textContent = dict.modalDesc;
+        document.getElementById('btnGoToJournalText').textContent = dict.btnModalJournal;
+        document.getElementById('btnDismissModalText').textContent = dict.btnModalDismiss;
+
+        // Tab 3: Jurnal
+        document.getElementById('heroJournalTitle').textContent = dict.heroJournalTitle;
+        document.getElementById('heroJournalSubtitle').textContent = dict.heroJournalSubtitle;
+        document.getElementById('moodTextGreat').textContent = dict.moodGreat;
+        document.getElementById('moodTextHappy').textContent = dict.moodHappy;
+        document.getElementById('moodTextCalm').textContent = dict.moodCalm;
+        document.getElementById('moodTextTired').textContent = dict.moodTired;
+        document.getElementById('journalTitleInput').placeholder = dict.journalTitlePlaceholder;
+        document.getElementById('journalBodyInput').placeholder = dict.journalBodyPlaceholder;
+        document.getElementById('btnSaveJournalText').textContent = dict.btnSaveJournal;
+
+        // Bottom Bar Labels
+        document.getElementById('tabLabelTasks').textContent = dict.tabTasks;
+        document.getElementById('tabLabelFocus').textContent = dict.tabFocus;
+        document.getElementById('tabLabelJournal').textContent = dict.tabJournal;
+
+        // Re-render dinamis
+        setupHeader();
+        renderTasks();
+        renderJournals();
+      }
+
+      function initLanguageSwitcher() {
+        const btn = document.getElementById('langSwitcherBtn');
+        const menu = document.getElementById('langDropdownMenu');
+        const options = document.querySelectorAll('.lang-option-btn');
+
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !isExpanded);
+          menu.classList.toggle('show');
+        });
+
+        options.forEach(opt => {
+          opt.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const lang = opt.getAttribute('data-lang');
+            if (lang && TRANSLATIONS[lang]) {
+              applyLanguage(lang);
+              btn.setAttribute('aria-expanded', 'false');
+              menu.classList.remove('show');
+              const toastMsg = lang === 'km' 
+                ? 'បានប្តូរភាសាទៅជា ភាសាខ្មែរ 🇰🇭' 
+                : (lang === 'en' ? 'Language switched to English 🇬🇧' : 'Bahasa diubah ke Bahasa Indonesia 🇮🇩');
+              showToast(toastMsg, '🌐');
+            }
+          });
+        });
+
+        document.addEventListener('click', () => {
+          btn.setAttribute('aria-expanded', 'false');
+          menu.classList.remove('show');
+        });
+      }
+
+      /* --- NAVIGASI TAB --- */
+      function switchTab(targetId) {
+        const tabBtns = document.querySelectorAll('.bottom-bar .tab-btn');
         const screens = document.querySelectorAll('.screen');
 
-        tabButtons.forEach(btn => {
+        tabBtns.forEach(b => {
+          const isTarget = b.getAttribute('data-target') === targetId;
+          b.classList.toggle('active', isTarget);
+          b.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+        });
+
+        screens.forEach(s => {
+          s.classList.toggle('active', s.id === targetId);
+        });
+      }
+
+      function initTabNavigation() {
+        const tabBtns = document.querySelectorAll('.bottom-bar .tab-btn');
+        tabBtns.forEach(btn => {
           btn.addEventListener('click', () => {
             const targetId = btn.getAttribute('data-target');
-            if (!targetId) return;
-
-            // Update Tab Buttons
-            tabButtons.forEach(b => {
-              b.classList.remove('active');
-              b.setAttribute('aria-selected', 'false');
-            });
-            btn.classList.add('active');
-            btn.setAttribute('aria-selected', 'true');
-
-            // Switch Screen
-            screens.forEach(s => {
-              s.classList.remove('active');
-            });
-            const targetScreen = document.getElementById(targetId);
-            if (targetScreen) {
-              targetScreen.classList.add('active');
-            }
+            if (targetId) switchTab(targetId);
           });
         });
       }
 
-      /* --- TAB 1: TUGAS LOGIC --- */
-      function saveTasks() {
-        localStorage.setItem('ph_tasks', JSON.stringify(tasks));
-        renderTasks();
-      }
-
+      /* --- TAB 1: TUGAS --- */
       function renderTasks() {
-        const container = document.getElementById('tasksContainer');
-        const emptyState = document.getElementById('emptyStateTasks');
+        const container = document.getElementById('tasksListContainer');
+        const emptyState = document.getElementById('emptyTasksState');
         const bottomBadge = document.getElementById('bottomTaskBadge');
+        const dict = TRANSLATIONS[currentLang];
 
-        // Filter tasks
-        const filtered = tasks.filter(t => {
-          if (currentFilter === 'active') return !t.completed;
-          if (currentFilter === 'completed') return t.completed;
+        const total = tasks.length;
+        const completed = tasks.filter(t => t.completed).length;
+        const active = total - completed;
+
+        document.getElementById('countFilterAll').textContent = total;
+        document.getElementById('countFilterActive').textContent = active;
+        document.getElementById('countFilterDone').textContent = completed;
+
+        if (bottomBadge) {
+          bottomBadge.textContent = active;
+          bottomBadge.style.display = active > 0 ? 'flex' : 'none';
+        }
+
+        const pct = total === 0 ? 0 : Math.round((completed / total) * 100);
+        const progressSeparator = currentLang === 'en' ? 'of' : (currentLang === 'km' ? 'នៃ' : 'dari');
+        document.getElementById('taskProgressText').textContent = `${completed} ${progressSeparator} ${total} ${dict.tasksCompletedSuffix}`;
+        document.getElementById('taskProgressPercent').textContent = `${pct}%`;
+        document.getElementById('taskProgressBar').style.width = `${pct}%`;
+
+        const filteredTasks = tasks.filter(t => {
+          if (currentFilter === 'aktif') return !t.completed;
+          if (currentFilter === 'selesai') return t.completed;
           return true;
         });
 
-        // Counts
-        const totalCount = tasks.length;
-        const completedCount = tasks.filter(t => t.completed).length;
-        const activeCount = totalCount - completedCount;
-
-        document.getElementById('countAll').textContent = totalCount;
-        document.getElementById('countActive').textContent = activeCount;
-        document.getElementById('countDone').textContent = completedCount;
-
-        if (bottomBadge) {
-          bottomBadge.textContent = activeCount;
-          bottomBadge.style.display = activeCount > 0 ? 'flex' : 'none';
-        }
-
-        // Progress bar
-        const percent = totalCount === 0 ? 0 : Math.round((completedCount / totalCount) * 100);
-        document.getElementById('taskProgressText').textContent = `${completedCount} dari ${totalCount} tugas selesai`;
-        document.getElementById('taskProgressPercent').textContent = `${percent}%`;
-        document.getElementById('taskProgressBar').style.width = `${percent}%`;
-
-        // Render List
         container.innerHTML = '';
-        if (filtered.length === 0) {
+
+        if (filteredTasks.length === 0) {
           emptyState.style.display = 'block';
         } else {
           emptyState.style.display = 'none';
 
-          filtered.forEach(task => {
-            const item = document.createElement('div');
-            item.className = `task-item ${task.completed ? 'completed' : ''}`;
-            
-            const priorityClass = task.priority === 'high' ? 'priority-high' : (task.priority === 'med' ? 'priority-med' : 'priority-low');
-            const priorityLabel = task.priority === 'high' ? 'Tinggi' : (task.priority === 'med' ? 'Sedang' : 'Rendah');
+          filteredTasks.forEach(task => {
+            const card = document.createElement('div');
+            card.className = `task-card ${task.completed ? 'completed' : ''}`;
+            card.setAttribute('data-id', task.id);
 
-            item.innerHTML = `
-              <button class="task-checkbox-btn" aria-label="Tandai selesai">
+            let priorityBadgeHTML = '';
+            if (task.priority === 'tinggi') {
+              priorityBadgeHTML = `<span class="task-priority-tag tag-tinggi">🔥 ${dict.priorityHigh}</span>`;
+            } else if (task.priority === 'sedang') {
+              priorityBadgeHTML = `<span class="task-priority-tag tag-sedang">⚡ ${dict.priorityMed}</span>`;
+            } else {
+              priorityBadgeHTML = `<span class="task-priority-tag tag-rendah">🌱 ${dict.priorityLow}</span>`;
+            }
+
+            card.innerHTML = `
+              <button 
+                type="button" 
+                class="check-circle-btn" 
+                title="${task.completed ? 'Tandai belum selesai' : 'Tandai selesai'}"
+                aria-label="Status tugas"
+              >
                 <svg viewBox="0 0 24 24" fill="none">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </button>
-              <div class="task-details">
-                <div class="task-title">${escapeHTML(task.title)}</div>
-                <div class="task-meta">
-                  <span class="tag-category">${escapeHTML(task.category)}</span>
-                  <span class="tag-priority ${priorityClass}">${priorityLabel}</span>
+              <div class="task-content-center">
+                <span class="task-title-text">${escapeHTML(task.title)}</span>
+                <div class="task-meta-row">
+                  ${priorityBadgeHTML}
                 </div>
               </div>
-              <button class="btn-delete-task" title="Hapus tugas" aria-label="Hapus tugas">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <button 
+                type="button" 
+                class="btn-delete-right" 
+                title="Hapus tugas" 
+                aria-label="Hapus tugas"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="3 6 5 6 21 6"></polyline>
                   <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                 </svg>
               </button>
             `;
 
-            // Checkbox click
-            item.querySelector('.task-checkbox-btn').addEventListener('click', () => {
+            const toggleTask = () => {
               task.completed = !task.completed;
-              saveTasks();
+              saveTasksToLocalStorage();
               if (task.completed) {
-                showToast('Tugas diselesaikan! Mantap 🎉', '🎉');
+                showToast(dict.toastTaskCompleted, '🎉');
+              } else {
+                showToast(dict.toastTaskUncompleted, '↩️');
               }
+            };
+
+            card.querySelector('.check-circle-btn').addEventListener('click', (e) => {
+              e.stopPropagation();
+              toggleTask();
             });
 
-            // Delete click
-            item.querySelector('.btn-delete-task').addEventListener('click', () => {
+            card.addEventListener('click', (e) => {
+              if (e.target.closest('.btn-delete-right')) return;
+              toggleTask();
+            });
+
+            card.querySelector('.btn-delete-right').addEventListener('click', (e) => {
+              e.stopPropagation();
               tasks = tasks.filter(t => t.id !== task.id);
-              saveTasks();
-              showToast('Tugas telah dihapus.', '🗑️');
+              saveTasksToLocalStorage();
+              showToast(dict.toastTaskDeleted, '🗑️');
             });
 
-            container.appendChild(item);
+            container.appendChild(card);
           });
         }
       }
 
-      function initTasks() {
-        const form = document.getElementById('addTaskForm');
+      function initTasksComponent() {
+        const form = document.getElementById('quickAddTaskForm');
         const input = document.getElementById('taskTitleInput');
-        const prioritySelect = document.getElementById('prioritySelect');
-        const catPills = document.querySelectorAll('#categoryPicker .cat-pill');
-        const filterBtns = document.querySelectorAll('.filter-btn');
+        const priorityPills = document.querySelectorAll('#priorityPillGroup .priority-pill-btn');
+        const filterBtns = document.querySelectorAll('.filter-category-bar .filter-tab-btn');
 
-        // Category Selection
-        catPills.forEach(pill => {
+        priorityPills.forEach(pill => {
           pill.addEventListener('click', () => {
-            catPills.forEach(p => p.classList.remove('active'));
+            priorityPills.forEach(p => {
+              p.classList.remove('active');
+              p.setAttribute('aria-checked', 'false');
+            });
             pill.classList.add('active');
-            selectedCategory = pill.getAttribute('data-cat') || 'Kerja';
+            pill.setAttribute('aria-checked', 'true');
+            selectedPriority = pill.getAttribute('data-priority') || 'tinggi';
           });
         });
 
-        // Filter Buttons
         filterBtns.forEach(btn => {
           btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
+            filterBtns.forEach(b => {
+              b.classList.remove('active');
+              b.setAttribute('aria-selected', 'false');
+            });
             btn.classList.add('active');
-            currentFilter = btn.getAttribute('data-filter') || 'all';
+            btn.setAttribute('aria-selected', 'true');
+            currentFilter = btn.getAttribute('data-filter') || 'semua';
             renderTasks();
           });
         });
 
-        // Submit new task
         form.addEventListener('submit', (e) => {
           e.preventDefault();
           const title = input.value.trim();
@@ -1879,239 +2384,253 @@
           const newTask = {
             id: Date.now(),
             title: title,
-            category: selectedCategory,
-            priority: prioritySelect.value,
-            completed: false
+            priority: selectedPriority,
+            completed: false,
+            createdAt: new Date().toISOString()
           };
 
           tasks.unshift(newTask);
-          saveTasks();
+          saveTasksToLocalStorage();
           input.value = '';
-          showToast('Tugas baru ditambahkan! 🚀', '🚀');
+          input.focus();
+          showToast(t('toastTaskAdded'), '🚀');
         });
 
         renderTasks();
       }
 
-      /* --- TAB 2: FOKUS (POMODORO TIMER) --- */
-      let timerDuration = 1500; // default 25 mins
+      /* =========================================
+         TAB 2: FOKUS (POMODORO TIMER)
+         ========================================= */
+      let currentMode = 'fokus';
+      let timerDuration = 1500;
       let timeLeft = 1500;
       let timerInterval = null;
       let isTimerRunning = false;
-      let completedSessions = parseInt(localStorage.getItem('ph_focus_sessions') || '0', 10);
-      let totalFocusMinutes = parseInt(localStorage.getItem('ph_focus_minutes') || '0', 10);
+      let focusSessions = parseInt(localStorage.getItem('ph_focus_sessions') || '0', 10);
+      let focusMinutes = parseInt(localStorage.getItem('ph_focus_minutes') || '0', 10);
 
-      // Web Audio API chime generator
-      function playChime() {
-        const soundEnabled = document.getElementById('soundToggle').checked;
-        if (!soundEnabled) return;
-
+      function playNativeBeepAlarm() {
         try {
-          const AudioContext = window.AudioContext || window.webkitAudioContext;
-          if (!AudioContext) return;
-          const ctx = new AudioContext();
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) return;
+          const ctx = new AudioContextClass();
 
-          // Pleasant dual-tone bell chime
-          const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
-          notes.forEach((freq, idx) => {
+          if (ctx.state === 'suspended') {
+            ctx.resume();
+          }
+
+          const beeps = [
+            { freq: 880, startOffset: 0, duration: 0.16 },
+            { freq: 880, startOffset: 0.22, duration: 0.16 },
+            { freq: 1175, startOffset: 0.44, duration: 0.32 }
+          ];
+
+          beeps.forEach(item => {
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
 
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.12);
+            const startTime = ctx.currentTime + item.startOffset;
+            osc.frequency.setValueAtTime(item.freq, startTime);
 
-            gain.gain.setValueAtTime(0, ctx.currentTime + idx * 0.12);
-            gain.gain.linearRampToValueAtTime(0.25, ctx.currentTime + idx * 0.12 + 0.02);
-            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + idx * 0.12 + 1.2);
+            gain.gain.setValueAtTime(0, startTime);
+            gain.gain.linearRampToValueAtTime(0.3, startTime + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.0001, startTime + item.duration);
 
             osc.connect(gain);
             gain.connect(ctx.destination);
 
-            osc.start(ctx.currentTime + idx * 0.12);
-            osc.stop(ctx.currentTime + idx * 0.12 + 1.3);
+            osc.start(startTime);
+            osc.stop(startTime + item.duration);
           });
         } catch (e) {
-          console.warn('Audio Context not allowed or supported', e);
+          console.warn('Web Audio API alarm error:', e);
         }
       }
 
       function updateTimerDisplay() {
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        const display = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        document.getElementById('timerDisplay').textContent = display;
+        const m = Math.floor(timeLeft / 60);
+        const s = timeLeft % 60;
+        document.getElementById('timerDisplay').textContent = 
+          `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 
-        // Circular dial stroke update
         const circle = document.getElementById('timerDialCircle');
-        const circumference = 2 * Math.PI * 95; // ~596.9
+        const circumference = 2 * Math.PI * 95;
         const progress = (timerDuration - timeLeft) / timerDuration;
-        const offset = circumference * (1 - progress);
-        circle.style.strokeDashoffset = offset;
+        circle.style.strokeDashoffset = circumference * (1 - progress);
       }
 
-      function updateStatsDisplay() {
-        document.getElementById('statCompletedSessions').textContent = completedSessions;
-        document.getElementById('statTotalMinutes').textContent = `${totalFocusMinutes} m`;
+      function updateFocusStats() {
+        document.getElementById('statCompletedSessions').textContent = focusSessions;
+        document.getElementById('statTotalMinutes').textContent = `${focusMinutes} m`;
       }
 
-      function startTimer() {
-        if (isTimerRunning) return;
-        isTimerRunning = true;
-
-        document.getElementById('timerPlayIcon').style.display = 'none';
-        document.getElementById('timerPauseIcon').style.display = 'block';
-        document.getElementById('timerStateLabel').textContent = 'Berjalan...';
-
-        timerInterval = setInterval(() => {
-          if (timeLeft > 0) {
-            timeLeft--;
-            updateTimerDisplay();
-          } else {
-            completeTimer();
-          }
-        }, 1000);
+      function showReflectionModal() {
+        const modal = document.getElementById('reflectionModal');
+        if (modal) modal.classList.add('show');
       }
 
-      function pauseTimer() {
-        if (!isTimerRunning) return;
-        isTimerRunning = false;
-        clearInterval(timerInterval);
-
-        document.getElementById('timerPlayIcon').style.display = 'block';
-        document.getElementById('timerPauseIcon').style.display = 'none';
-        document.getElementById('timerStateLabel').textContent = 'Dijeda';
+      function hideReflectionModal() {
+        const modal = document.getElementById('reflectionModal');
+        if (modal) modal.classList.remove('show');
       }
 
-      function resetTimer() {
-        pauseTimer();
-        timeLeft = timerDuration;
-        document.getElementById('timerStateLabel').textContent = 'Fokus Aktif';
-        updateTimerDisplay();
-      }
+      function initTimerComponent() {
+        const btnStart = document.getElementById('btnStartTimer');
+        const btnPause = document.getElementById('btnPauseTimer');
+        const btnReset = document.getElementById('btnResetTimer');
+        const modeTabs = document.querySelectorAll('.timer-modes-box .mode-tab-btn');
+        const stateLabel = document.getElementById('timerStateLabel');
 
-      function completeTimer() {
-        pauseTimer();
-        playChime();
+        const btnGoToJournal = document.getElementById('btnGoToJournal');
+        const btnDismissModal = document.getElementById('btnDismissModal');
+        const reflectionModal = document.getElementById('reflectionModal');
 
-        // If completed a 25m focus session
-        if (timerDuration === 1500) {
-          completedSessions++;
-          totalFocusMinutes += 25;
-          localStorage.setItem('ph_focus_sessions', completedSessions.toString());
-          localStorage.setItem('ph_focus_minutes', totalFocusMinutes.toString());
-          updateStatsDisplay();
-          showToast('Sesi Fokus Selesai! Kerja bagus 🎉', '🎉');
-        } else {
-          showToast('Waktu istirahat selesai! Siap fokus lagi? ✨', '✨');
-        }
+        // Mulai (Start)
+        btnStart.addEventListener('click', () => {
+          if (isTimerRunning) return;
+          isTimerRunning = true;
+          const dict = TRANSLATIONS[currentLang];
+          stateLabel.textContent = currentMode === 'fokus' ? dict.stateFocusRunning : dict.stateBreakRunning;
+          showToast(dict.toastSessionStarted, '⏱️');
 
-        timeLeft = timerDuration;
-        document.getElementById('timerStateLabel').textContent = 'Selesai!';
-        updateTimerDisplay();
-      }
+          timerInterval = setInterval(() => {
+            if (timeLeft > 0) {
+              timeLeft--;
+              updateTimerDisplay();
+            } else {
+              clearInterval(timerInterval);
+              isTimerRunning = false;
+              playNativeBeepAlarm();
 
-      function initTimer() {
-        const toggleBtn = document.getElementById('btnToggleTimer');
-        const resetBtn = document.getElementById('btnResetTimer');
-        const skipBtn = document.getElementById('btnSkipTimer');
-        const modeButtons = document.querySelectorAll('.timer-modes .mode-btn');
+              const d = TRANSLATIONS[currentLang];
+              if (currentMode === 'fokus') {
+                focusSessions++;
+                focusMinutes += 25;
+                localStorage.setItem('ph_focus_sessions', focusSessions);
+                localStorage.setItem('ph_focus_minutes', focusMinutes);
+                updateFocusStats();
 
-        toggleBtn.addEventListener('click', () => {
-          if (isTimerRunning) {
-            pauseTimer();
-          } else {
-            startTimer();
-          }
+                stateLabel.textContent = d.stateSessionDone;
+                showReflectionModal();
+              } else {
+                stateLabel.textContent = d.stateBreakDone;
+                showToast(d.toastBreakOver, '☕');
+              }
+
+              timeLeft = timerDuration;
+              updateTimerDisplay();
+            }
+          }, 1000);
         });
 
-        resetBtn.addEventListener('click', () => {
-          resetTimer();
-          showToast('Timer di-reset.', '🔄');
+        // Jeda (Pause)
+        btnPause.addEventListener('click', () => {
+          if (!isTimerRunning) return;
+          isTimerRunning = false;
+          clearInterval(timerInterval);
+          stateLabel.textContent = t('statePaused');
+          showToast(t('toastSessionPaused'), '⏸️');
         });
 
-        skipBtn.addEventListener('click', () => {
-          completeTimer();
+        // Atur Ulang (Reset)
+        btnReset.addEventListener('click', () => {
+          isTimerRunning = false;
+          clearInterval(timerInterval);
+          timeLeft = timerDuration;
+          stateLabel.textContent = currentMode === 'fokus' ? t('stateFocusReady') : t('stateBreakReady');
+          updateTimerDisplay();
+          showToast(t('toastTimerReset'), '🔄');
         });
 
-        modeButtons.forEach(btn => {
+        // Mode Sesi
+        modeTabs.forEach(btn => {
           btn.addEventListener('click', () => {
-            modeButtons.forEach(b => b.classList.remove('active'));
+            modeTabs.forEach(b => {
+              b.classList.remove('active');
+              b.setAttribute('aria-selected', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
 
-            const newDuration = parseInt(btn.getAttribute('data-time'), 10);
-            timerDuration = newDuration;
-            resetTimer();
+            currentMode = btn.getAttribute('data-mode') || 'fokus';
+            timerDuration = parseInt(btn.getAttribute('data-time'), 10);
+            
+            isTimerRunning = false;
+            clearInterval(timerInterval);
+            timeLeft = timerDuration;
+            stateLabel.textContent = currentMode === 'fokus' ? t('stateFocusReady') : t('stateBreakReady');
+            updateTimerDisplay();
           });
         });
 
+        // Modal Refleksi Actions
+        btnGoToJournal.addEventListener('click', () => {
+          hideReflectionModal();
+          switchTab('tabJurnal');
+
+          setTimeout(() => {
+            const titleInput = document.getElementById('journalTitleInput');
+            const bodyInput = document.getElementById('journalBodyInput');
+            if (titleInput && !titleInput.value) {
+              titleInput.value = t('modalPrefillTitle');
+            }
+            if (bodyInput) {
+              bodyInput.focus();
+            }
+          }, 260);
+          showToast(t('toastJournalSaved'), '📖');
+        });
+
+        btnDismissModal.addEventListener('click', () => {
+          hideReflectionModal();
+        });
+
+        reflectionModal.addEventListener('click', (e) => {
+          if (e.target === reflectionModal) {
+            hideReflectionModal();
+          }
+        });
+
         updateTimerDisplay();
-        updateStatsDisplay();
+        updateFocusStats();
       }
 
-      /* --- TAB 3: JURNAL LOGIC --- */
-      function saveJournals() {
-        localStorage.setItem('ph_journals', JSON.stringify(journals));
-        renderJournals();
-      }
-
+      /* --- TAB 3: JURNAL --- */
       function renderJournals() {
-        const list = document.getElementById('journalListContainer');
-        const emptyState = document.getElementById('emptyStateJournal');
-        const countBadge = document.getElementById('journalCountBadge');
+        const container = document.getElementById('journalListContainer');
+        container.innerHTML = '';
 
-        countBadge.textContent = `${journals.length} Catatan`;
+        const dict = TRANSLATIONS[currentLang];
 
-        list.innerHTML = '';
-        if (journals.length === 0) {
-          emptyState.style.display = 'block';
-        } else {
-          emptyState.style.display = 'none';
-
-          journals.forEach(item => {
-            const card = document.createElement('article');
-            card.className = 'journal-card';
-            card.innerHTML = `
-              <div class="journal-card-top">
-                <div class="journal-card-mood">
-                  <span class="journal-card-emoji">${item.emoji}</span>
-                  <span class="cat-pill">${escapeHTML(item.mood)}</span>
-                </div>
-                <div class="journal-card-date">${escapeHTML(item.date)}</div>
+        journals.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'journal-card';
+          card.innerHTML = `
+            <div class="journal-card-top">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span style="font-size:1.15rem;">${item.emoji}</span>
+                <span style="font-size:0.75rem; font-weight:700; color:var(--purple-700);">${escapeHTML(item.mood)}</span>
               </div>
-              <h3 class="journal-card-title">${escapeHTML(item.title)}</h3>
-              <p class="journal-card-body">${escapeHTML(item.content)}</p>
-              <div class="journal-card-footer">
-                <span class="tag-category">${escapeHTML(item.tag || 'Refleksi')}</span>
-                <button class="btn-delete-entry" aria-label="Hapus catatan">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="3 6 5 6 21 6"></polyline>
-                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                  </svg>
-                  <span>Hapus</span>
-                </button>
-              </div>
-            `;
-
-            card.querySelector('.btn-delete-entry').addEventListener('click', () => {
-              journals = journals.filter(j => j.id !== item.id);
-              saveJournals();
-              showToast('Catatan jurnal dihapus.', '🗑️');
-            });
-
-            list.appendChild(card);
-          });
-        }
+              <span style="font-size:0.72rem; color:var(--text-light); font-weight:600;">${dict.todayPrefix}, ${escapeHTML(item.date)}</span>
+            </div>
+            <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:4px;">${escapeHTML(item.title)}</h4>
+            <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.45;">${escapeHTML(item.content)}</p>
+          `;
+          container.appendChild(card);
+        });
       }
 
-      function initJournal() {
-        const moodButtons = document.querySelectorAll('#moodPicker .mood-btn');
+      function initJournalComponent() {
+        const moodBtns = document.querySelectorAll('#moodPicker .mood-btn');
         const titleInput = document.getElementById('journalTitleInput');
         const bodyInput = document.getElementById('journalBodyInput');
         const saveBtn = document.getElementById('btnSaveJournal');
 
-        moodButtons.forEach(btn => {
+        moodBtns.forEach(btn => {
           btn.addEventListener('click', () => {
-            moodButtons.forEach(b => b.classList.remove('active'));
+            moodBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             selectedMood = {
               mood: btn.getAttribute('data-mood'),
@@ -2123,52 +2642,47 @@
         saveBtn.addEventListener('click', () => {
           const content = bodyInput.value.trim();
           if (!content) {
-            showToast('Tuliskan refleksi terlebih dahulu!', '✍️');
+            showToast(t('toastWriteJournalFirst'), '✍️');
             bodyInput.focus();
             return;
           }
 
-          const title = titleInput.value.trim() || 'Catatan Refleksi';
           const now = new Date();
           const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-          const dateStr = `Hari ini, ${timeStr}`;
-
-          const newEntry = {
+          
+          journals.unshift({
             id: Date.now(),
-            title: title,
+            title: titleInput.value.trim() || t('modalPrefillTitle'),
             mood: selectedMood.mood,
             emoji: selectedMood.emoji,
-            tag: 'Refleksi',
             content: content,
-            date: dateStr
-          };
+            date: `${timeStr}`
+          });
 
-          journals.unshift(newEntry);
-          saveJournals();
-
+          saveJournalsToLocalStorage();
           titleInput.value = '';
           bodyInput.value = '';
-          showToast('Jurnal berhasil disimpan! 📖✨', '📖');
+          showToast(t('toastJournalSaved'), '📖');
         });
 
         renderJournals();
       }
 
-      /* --- HELPER: ESCAPE HTML --- */
       function escapeHTML(str) {
         if (!str) return '';
-        const div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
+        const d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
       }
 
-      /* --- INITIALIZE APPLICATION --- */
+      /* --- INISIALISASI SELURUH APLIKASI --- */
       document.addEventListener('DOMContentLoaded', () => {
-        setupDateAndGreeting();
+        initLanguageSwitcher();
+        applyLanguage(currentLang);
         initTabNavigation();
-        initTasks();
-        initTimer();
-        initJournal();
+        initTasksComponent();
+        initTimerComponent();
+        initJournalComponent();
       });
 
     })();
